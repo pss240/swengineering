@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/joinFragment"
+        android:name="com.example.swengineering.JoinFragment"
+        android:label="fragment_join"
+        tools:layout="@layout/fragment_join" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.swengineering.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_joinFragment"
+            app:destination="@id/joinFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.example.swengineering.WelcomeFragment"
+        android:label="fragment_welcome"
+        tools:layout="@layout/fragment_welcome" >
+        <action
+            android:id="@+id/action_welcomeFragment_to_writeEssay"
+            app:destination="@id/writeEssay" />
+        <action
+            android:id="@+id/action_welcomeFragment_to_anthologyFragment"
+            app:destination="@id/anthologyFragment" />
+        <action
+            android:id="@+id/action_welcomeFragment_to_subscribeFragment"
+            app:destination="@id/subscribeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/anthologyFragment"
+        android:name="com.example.swengineering.AnthologyFragment"
+        android:label="fragment_anthology"
+        tools:layout="@layout/fragment_anthology" />
+    <fragment
+        android:id="@+id/writeEssay"
+        android:name="com.example.swengineering.WriteEssay"
+        android:label="WriteEssay" />
+    <fragment
+        android:id="@+id/subscribeFragment"
+        android:name="com.example.swengineering.SubscribeFragment"
+        android:label="SubscribeFragment" />
+</navigation>

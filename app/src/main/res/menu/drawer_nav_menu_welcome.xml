@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/button_welcome_MyEssay"
+        android:title="My Essay"
+        />
+    <item
+        android:id="@+id/button_welcome_Anthology"
+        android:title="Anthology"
+        />
+    <item
+        android:id="@+id/button_welcome_Subscribe"
+        android:title="Subscribe"
+        />
+    <item
+        android:id="@+id/button_welcome_Message"
+        android:title="Message"
+        />
+    <item
+        android:id="@+id/button_welcome_MyPage"
+        android:title="My Page"
+        />
+    <item
+        android:id="@+id/button_welcome_Settings"
+        android:title="Settings"
+        />
+    <item
+        android:id="@+id/button_welcome_Notice"
+        android:title="Notice"
+        />
+    <item
+        android:id="@+id/button_welcome_test"
+        android:title="testing"
+        />
+</menu>

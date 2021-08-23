@@ -1,0 +1,58 @@
+package com.example.swengineering
+
+import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.fragment_anthology.*
+import kotlinx.android.synthetic.main.fragment_subscribe.*
+
+private const val ARG_PARAM1 = "param1"
+private const val ARG_PARAM2 = "param2"
+
+class SubscribeFragment : Fragment() {
+    private var param1: String? = null
+    private var param2: String? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            param1 = it.getString(ARG_PARAM1)
+            param2 = it.getString(ARG_PARAM2)
+        }
+    }
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_subscribe, container, false)
+    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        var item = arrayListOf(
+            Data(R.drawable.ic_baseline_person_24,"Title1","Lorem hello my name is haha nnice to meet you how are you im fine thank you and you??","51","42"),
+            Data(R.drawable.ic_baseline_person_24,"Title1","Lorem hello my name is haha nnice to meet you how are you im fine thank you and you??","51","42"),
+            Data(R.drawable.ic_baseline_person_24,"Title1","Lorem hello my name is haha nnice to meet you how are you im fine thank you and you??","51","42"),
+            Data(R.drawable.ic_baseline_person_24,"Title1","Lorem hello my name is haha nnice to meet you how are you im fine thank you and you??","51","42"),
+            Data(R.drawable.ic_baseline_person_24,"Title1","Lorem hello my name is haha nnice to meet you how are you im fine thank you and you??","51","42"),
+            Data(R.drawable.ic_baseline_person_24,"Title1","Lorem hello my name is haha nnice to meet you how are you im fine thank you and you??","51","42")
+        )
+        recyclerview_subscribe.layoutManager = LinearLayoutManager(requireContext())
+        recyclerview_subscribe.adapter = CustomAdapter(item)
+
+    }
+    companion object {
+        fun newInstance(param1: String, param2: String) =
+            SubscribeFragment().apply {
+                arguments = Bundle().apply {
+                    putString(ARG_PARAM1, param1)
+                    putString(ARG_PARAM2, param2)
+                }
+            }
+    }
+}
