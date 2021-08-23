@@ -9,9 +9,7 @@ import android.view.ViewGroup
 import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
 import com.google.android.material.navigation.NavigationView
-import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_welcome.*
 
 private const val ARG_PARAM1 = "param1"
@@ -19,7 +17,6 @@ private const val ARG_PARAM2 = "param2"
 
 
 class WelcomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener {
-    // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
@@ -35,7 +32,6 @@ class WelcomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedListe
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_welcome, container, false)
     }
     lateinit var navController : NavController
@@ -44,6 +40,9 @@ class WelcomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedListe
         navController = Navigation.findNavController(view)
         button_welcome_drawmenu.setOnClickListener{layout_drawer_welcome.openDrawer(GravityCompat.START)}
         naviview_Welcome.setNavigationItemSelectedListener(this)
+        button_todaytopic.setOnClickListener {
+            navController.navigate(R.id.action_welcomeFragment_to_todayTopicFragment)
+        }
     }
     companion object {
         fun newInstance(param1: String, param2: String) =
@@ -66,8 +65,8 @@ class WelcomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedListe
                 navController.navigate(R.id.action_welcomeFragment_to_anthologyFragment)
             }
             R.id.button_welcome_Subscribe -> {
+                navController.navigate(R.id.action_welcomeFragment_to_subscribeFragment)
                 layout_drawer_welcome.closeDrawers()
-                println("Subscribe")
             }
             R.id.button_welcome_Message -> {
                 layout_drawer_welcome.closeDrawers()
@@ -86,11 +85,9 @@ class WelcomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedListe
             R.id.button_welcome_Notice -> {
                 layout_drawer_welcome.closeDrawers()
                 println("Notice")
-
             }
             R.id.button_welcome_test -> {
                 layout_drawer_welcome.closeDrawers()
-                navController.navigate(R.id.action_welcomeFragment_to_subscribeFragment)
             }
         }
         return true

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id = "@+id/layout_drawer_welcome"
-    tools:context=".SubscribeFragment">
+    tools:context=".ProfileFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -24,11 +24,11 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView_Subscribe"
+            android:id="@+id/textView_Profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Subscribe"
+            android:text="Profile"
             android:textColor="@color/black"
             android:textSize="30sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -36,29 +36,49 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button_welcome_drawmenu" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="409dp"
-            android:layout_height="618dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="2dp"
-            android:id="@+id/recyclerview_subscribe"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+        <ImageView
+            android:id="@+id/imageView_Profile_User"
+            android:layout_width="122dp"
+            android:layout_height="107dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_baseline_person_24"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView_Subscribe"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintTop_toBottomOf="@+id/textView_Profile" />
 
-        <ImageButton
-            android:id="@+id/imageButton_toSubscriber"
+        <TextView
+            android:id="@+id/textView_Profile_UserName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="68dp"
-            android:src="@drawable/ic_baseline_more_horiz_24"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.824"
-            app:layout_constraintStart_toEndOf="@+id/textView_Subscribe"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="168dp"
+            android:text="Name"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton_Profile_plus"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/imageView_Profile_User"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/imageButton_Profile_plus"
+            android:layout_width="77dp"
+            android:layout_height="72dp"
+            android:layout_marginTop="148dp"
+            android:layout_marginEnd="44dp"
+            android:src="@drawable/ic_baseline_maps_ugc_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="410dp"
+            android:layout_height="466dp"
+            android:layout_marginTop="32dp"
+            android:id="@+id/recyclerview_profile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_Profile_User" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

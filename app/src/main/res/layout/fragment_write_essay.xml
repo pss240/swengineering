@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id = "@+id/layout_drawer_welcome"
-    tools:context=".WelcomeFragment"
+    tools:context=".WriteEssay"
     tools:ignore="LabelFor">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -45,7 +45,7 @@
             android:background="@null"
             android:ems="10"
             android:inputType="textPersonName|textNoSuggestions"
-            android:text="Today's Topic/직접입력"
+            android:hint="Today's Topic/직접입력"
             android:textColor="#8C8C8C"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -59,7 +59,7 @@
             android:layout_marginTop="12dp"
             android:background="@null"
             android:gravity="top"
-            android:text="write your story"
+            android:hint="write your story"
             android:textColor="#8C8C8C"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -85,7 +85,7 @@
             android:layout_marginTop="32dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="#food"
+            android:hint="#food"
             android:textColor="@color/inputblank"
             android:textSize="20sp"
             app:layout_constraintStart_toEndOf="@+id/textView_hashtag"

@@ -1,5 +1,4 @@
 package com.example.swengineering
-
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -9,24 +8,20 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.custom_list_anthology.view.*
 
 
+class Data_TodayTopic(val Title:String, val name:String,val thumb:String)
 
-class Data_Anthology(val Title:String, val name:String,val thumb:String)
 
-
-class CustomViewHolder_Anthology(v: View) : RecyclerView.ViewHolder(v){
+class CustomViewHolder_TodayTopic(v: View) : RecyclerView.ViewHolder(v){
     val Title = v.textView_Anthology_TopicName
     val name = v.textView_Anthology_UserName
     val thumb = v.textView_Anthology_thumb
 }
-
-
-class CustomAdapter_Anthology (val DataList:ArrayList<Data_Anthology>,val context: Context): RecyclerView.Adapter<CustomViewHolder_Anthology>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder_Anthology {
+class CustomAdapter_TodayTopic (val DataList:ArrayList<Data_TodayTopic>,val context: Context): RecyclerView.Adapter<CustomViewHolder_TodayTopic>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder_TodayTopic {
         val cellForRow = LayoutInflater.from(context).inflate(R.layout.custom_list_anthology,parent,false)
-        return CustomViewHolder_Anthology(cellForRow)
+        return CustomViewHolder_TodayTopic(cellForRow)
     }
-
-    override fun onBindViewHolder(holder: CustomViewHolder_Anthology, position: Int) {
+    override fun onBindViewHolder(holder: CustomViewHolder_TodayTopic, position: Int) {
         val curData = DataList[position]
         holder.Title.text = curData.Title
         holder.name.text = curData.name

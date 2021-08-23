@@ -5,11 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_anthology.*
-import kotlinx.android.synthetic.main.fragment_subscribe.*
+
 
 
 private const val ARG_PARAM1 = "param1"
@@ -37,28 +35,24 @@ class AnthologyFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         var item = arrayListOf(
-            Data_Anthology("Title1","User1"),
-            Data_Anthology("Title2","User2"),
-            Data_Anthology("Title3","User3"),
-            Data_Anthology("Title4","User4"),
-            Data_Anthology("Title5","User5"),
-            Data_Anthology("Title6","User6"),
-            Data_Anthology("Title7","User7"),
-            Data_Anthology("Title8","User8"),
-            Data_Anthology("Title9","User9"),
-            Data_Anthology("Title10","User10"),
-            Data_Anthology("Title11","User11"),
-            Data_Anthology("Title12","User12"),
-            Data_Anthology("Title13","User13"),
-            Data_Anthology("Title14","User14"),
+            Data_Anthology("Title1","User1","10"),
+            Data_Anthology("Title2","User2","10"),
+            Data_Anthology("Title3","User3","10"),
+            Data_Anthology("Title4","User4","10"),
+            Data_Anthology("Title5","User5","10"),
+            Data_Anthology("Title6","User6","10"),
+            Data_Anthology("Title7","User7","10"),
+            Data_Anthology("Title8","User8","10"),
+            Data_Anthology("Title9","User9","10"),
+            Data_Anthology("Title10","User10","10"),
+            Data_Anthology("Title11","User11","10"),
+            Data_Anthology("Title12","User12","10"),
+            Data_Anthology("Title13","User13","10"),
+            Data_Anthology("Title14","User14","10"),
 
             )
-
         recyclerview_Anthology.layoutManager = LinearLayoutManager(requireContext())
         recyclerview_Anthology.adapter = CustomAdapter_Anthology(item,requireContext())
-
-
-
     }
     companion object {
         fun newInstance(param1: String, param2: String) =

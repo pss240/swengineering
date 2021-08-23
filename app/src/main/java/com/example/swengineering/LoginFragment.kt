@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_login.*
 
 private const val ARG_PARAM1 = "param1"

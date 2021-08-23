@@ -28,11 +28,11 @@
         android:label="fragment_welcome"
         tools:layout="@layout/fragment_welcome" >
         <action
-            android:id="@+id/action_welcomeFragment_to_writeEssay"
-            app:destination="@id/writeEssay" />
-        <action
             android:id="@+id/action_welcomeFragment_to_anthologyFragment"
             app:destination="@id/anthologyFragment" />
+        <action
+            android:id="@+id/action_welcomeFragment_to_todayTopicFragment"
+            app:destination="@id/todayTopicFragment" />
         <action
             android:id="@+id/action_welcomeFragment_to_subscribeFragment"
             app:destination="@id/subscribeFragment" />
@@ -49,5 +49,22 @@
     <fragment
         android:id="@+id/subscribeFragment"
         android:name="com.example.swengineering.SubscribeFragment"
-        android:label="SubscribeFragment" />
+        android:label="SubscribeFragment" >
+        <action
+            android:id="@+id/action_subscribeFragment_to_subscriberFragment"
+            app:destination="@id/subscriberFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/subscriberFragment"
+        android:name="com.example.swengineering.SubscriberFragment"
+        android:label="SubscriberFragment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.swengineering.ProfileFragment"
+        android:label="ProfileFragment" />
+    <fragment
+        android:id="@+id/todayTopicFragment"
+        android:name="com.example.swengineering.TodayTopicFragment"
+        android:label="fragment_today_topic"
+        tools:layout="@layout/fragment_today_topic" />
 </navigation>
