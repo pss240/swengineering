@@ -8,11 +8,12 @@
         <entry key="..\:/Users/arp11/AndroidStudioProjects/swengineering/app/src/main/res/drawable/ic_launcher_background.xml" value="0.29907407407407405" />
         <entry key="..\:/Users/arp11/AndroidStudioProjects/swengineering/app/src/main/res/layout/activity_main.xml" value="0.12635869565217392" />
         <entry key="..\:/Users/arp11/AndroidStudioProjects/swengineering/app/src/main/res/layout/custom_list.xml" value="0.3619791666666667" />
-        <entry key="..\:/Users/arp11/AndroidStudioProjects/swengineering/app/src/main/res/layout/custom_list_subscirbe.xml" value="0.12314814814814815" />
+        <entry key="..\:/Users/arp11/AndroidStudioProjects/swengineering/app/src/main/res/layout/custom_list_anthology.xml" value="0.3619791666666667" />
+        <entry key="..\:/Users/arp11/AndroidStudioProjects/swengineering/app/src/main/res/layout/custom_list_subscirbe.xml" value="0.33" />
         <entry key="..\:/Users/arp11/AndroidStudioProjects/swengineering/app/src/main/res/layout/fragment_anthology.xml" value="0.3619791666666667" />
         <entry key="..\:/Users/arp11/AndroidStudioProjects/swengineering/app/src/main/res/layout/fragment_join.xml" value="0.12635869565217392" />
         <entry key="..\:/Users/arp11/AndroidStudioProjects/swengineering/app/src/main/res/layout/fragment_login.xml" value="0.20208333333333334" />
-        <entry key="..\:/Users/arp11/AndroidStudioProjects/swengineering/app/src/main/res/layout/fragment_subscribe.xml" value="0.3619791666666667" />
+        <entry key="..\:/Users/arp11/AndroidStudioProjects/swengineering/app/src/main/res/layout/fragment_subscribe.xml" value="0.1" />
         <entry key="..\:/Users/arp11/AndroidStudioProjects/swengineering/app/src/main/res/layout/fragment_welcome.xml" value="0.20208333333333334" />
         <entry key="..\:/Users/arp11/AndroidStudioProjects/swengineering/app/src/main/res/layout/fragment_write_essay.xml" value="0.25" />
         <entry key="..\:/Users/arp11/AndroidStudioProjects/swengineering/app/src/main/res/layout/header_layout.xml" value="0.20208333333333334" />

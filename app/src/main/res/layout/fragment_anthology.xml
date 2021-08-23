@@ -19,13 +19,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ListView
-        android:id="@+id/listview_Anthology"
-        android:layout_width="match_parent"
-        android:layout_height="589dp"
-        android:layout_marginTop="92dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview_Anthology"
+        android:layout_width="410dp"
+        android:layout_height="587dp"
+        android:layout_marginTop="76dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_Anthology" />
 

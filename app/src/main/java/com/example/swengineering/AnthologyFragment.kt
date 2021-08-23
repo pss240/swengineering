@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_anthology.*
+import kotlinx.android.synthetic.main.fragment_subscribe.*
 
 
 private const val ARG_PARAM1 = "param1"
@@ -34,12 +36,29 @@ class AnthologyFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var item = arrayOf("Anthology1","Anthology2","Anthology3")
-        listview_Anthology.adapter = ArrayAdapter(requireContext(),android.R.layout.simple_list_item_1,item)
-        listview_Anthology.onItemClickListener = AdapterView.OnItemClickListener{parent, view, position, id ->
-            val selectItem = parent.getItemAtPosition(position)
-            println(selectItem.toString())
-        }
+        var item = arrayListOf(
+            Data_Anthology("Title1","User1"),
+            Data_Anthology("Title2","User2"),
+            Data_Anthology("Title3","User3"),
+            Data_Anthology("Title4","User4"),
+            Data_Anthology("Title5","User5"),
+            Data_Anthology("Title6","User6"),
+            Data_Anthology("Title7","User7"),
+            Data_Anthology("Title8","User8"),
+            Data_Anthology("Title9","User9"),
+            Data_Anthology("Title10","User10"),
+            Data_Anthology("Title11","User11"),
+            Data_Anthology("Title12","User12"),
+            Data_Anthology("Title13","User13"),
+            Data_Anthology("Title14","User14"),
+
+            )
+
+        recyclerview_Anthology.layoutManager = LinearLayoutManager(requireContext())
+        recyclerview_Anthology.adapter = CustomAdapter_Anthology(item,requireContext())
+
+
+
     }
     companion object {
         fun newInstance(param1: String, param2: String) =
