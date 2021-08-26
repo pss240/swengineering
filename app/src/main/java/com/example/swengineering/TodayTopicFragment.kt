@@ -116,7 +116,6 @@ class TodayTopicFragment : Fragment(), NavigationView.OnNavigationItemSelectedLi
             }
             R.id.button_welcome_test -> {
                 layout_drawer_welcome.closeDrawers()
-                navController.navigate(R.id.action_welcomeFragment_to_writeEssay)
             }
         }
         return true

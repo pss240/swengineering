@@ -56,7 +56,6 @@ class SubscribeFragment : Fragment(), NavigationView.OnNavigationItemSelectedLis
             Data_Subcribe(R.drawable.ic_baseline_person_24,"Title10","Lorem hello my name is haha nnice to meet you how are you im fine thank you and you??","51","42"),
             Data_Subcribe(R.drawable.ic_baseline_person_24,"Title11","Lorem hello my name is haha nnice to meet you how are you im fine thank you and you??","51","42"),
             Data_Subcribe(R.drawable.ic_baseline_person_24,"Title12","Lorem hello my name is haha nnice to meet you how are you im fine thank you and you??","51","42"),
-            Data_Subcribe(R.drawable.ic_baseline_person_24,"Title13","Lorem hello my name is haha nnice to meet you how are you im fine thank you and you??","51","42")
         )
         recyclerview_subscribe.layoutManager = LinearLayoutManager(requireContext())
         recyclerview_subscribe.adapter = CustomAdapter_Subscribe(item,requireContext())
@@ -100,7 +99,6 @@ class SubscribeFragment : Fragment(), NavigationView.OnNavigationItemSelectedLis
             }
             R.id.button_welcome_test -> {
                 layout_drawer_welcome.closeDrawers()
-                navController.navigate(R.id.action_welcomeFragment_to_writeEssay)
             }
         }
         return true
