@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Mypage">
+
+    <ImageButton
+        android:id="@+id/button_welcome_drawmenu"
+        android:layout_width="34dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/hamburger"
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.082"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_mypage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="My Page"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.112"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_welcome_drawmenu" />
+
+    <ImageView
+        android:id="@+id/imageView_Profile_User"
+        android:layout_width="122dp"
+        android:layout_height="107dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_baseline_person_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.114"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_mypage" />
+
+    <TextView
+        android:id="@+id/textView_mypage_user_name"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="24dp"
+        android:text="userName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.392"
+        app:layout_constraintStart_toEndOf="@+id/imageView_Profile_User"
+        app:layout_constraintTop_toBottomOf="@+id/textView_mypage" />
+
+    <TextView
+        android:id="@+id/textView_mypage_user_id"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="6dp"
+        android:text="ID(email)"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.392"
+        app:layout_constraintStart_toEndOf="@+id/imageView_Profile_User"
+        app:layout_constraintTop_toBottomOf="@+id/textView_mypage_user_name" />
+
+    <TextView
+        android:id="@+id/textView_mypage_user_language"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="6dp"
+        android:text="Language"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.392"
+        app:layout_constraintStart_toEndOf="@+id/imageView_Profile_User"
+        app:layout_constraintTop_toBottomOf="@+id/textView_mypage_user_id" />
+
+    <TextView
+        android:id="@+id/textView_mypage_user_subscriber_count"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:text="Subscriber : ???"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.156"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_Profile_User" />
+
+    <TextView
+        android:id="@+id/textView_mypage_user_essay_count"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="12dp"
+        android:text="Essay : ???"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.146"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_mypage_user_subscriber_count" />
+
+    <TextView
+        android:id="@+id/textView_mypage_user_like_count"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="12dp"
+        android:text="Like : ???"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.146"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_mypage_user_essay_count" />
+
+    <TextView
+        android:id="@+id/textView_mypage_user_comment_count"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="12dp"
+        android:text="comment : ???"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.146"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_mypage_user_like_count" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

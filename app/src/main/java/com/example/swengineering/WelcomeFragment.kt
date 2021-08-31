@@ -43,6 +43,10 @@ class WelcomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedListe
         button_todaytopic.setOnClickListener {
             navController.navigate(R.id.action_welcomeFragment_to_todayTopicFragment)
         }
+
+        button_yourtopic.setOnClickListener {
+            navController.navigate(R.id.action_welcomeFragment_to_freeboard)
+        }
     }
     companion object {
         fun newInstance(param1: String, param2: String) =
