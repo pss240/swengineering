@@ -36,6 +36,9 @@
         <action
             android:id="@+id/action_welcomeFragment_to_subscribeFragment"
             app:destination="@id/subscribeFragment" />
+        <action
+            android:id="@+id/action_welcomeFragment_to_freeboard"
+            app:destination="@id/freeboard" />
     </fragment>
     <fragment
         android:id="@+id/anthologyFragment"
@@ -67,4 +70,9 @@
         android:name="com.example.swengineering.TodayTopicFragment"
         android:label="fragment_today_topic"
         tools:layout="@layout/fragment_today_topic" />
+    <fragment
+        android:id="@+id/freeboard"
+        android:name="com.example.swengineering.Freeboard"
+        android:label="fragment_freeboard"
+        tools:layout="@layout/fragment_freeboard" />
 </navigation>
