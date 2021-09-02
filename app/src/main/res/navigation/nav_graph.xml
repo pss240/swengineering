@@ -39,6 +39,15 @@
         <action
             android:id="@+id/action_welcomeFragment_to_freeboard"
             app:destination="@id/freeboard" />
+        <action
+            android:id="@+id/action_welcomeFragment_to_myEssayPage"
+            app:destination="@id/myEssayPage" />
+        <action
+            android:id="@+id/action_welcomeFragment_to_message_main"
+            app:destination="@id/message_main" />
+        <action
+            android:id="@+id/action_welcomeFragment_to_mypage"
+            app:destination="@id/mypage" />
     </fragment>
     <fragment
         android:id="@+id/anthologyFragment"
@@ -75,4 +84,19 @@
         android:name="com.example.swengineering.Freeboard"
         android:label="fragment_freeboard"
         tools:layout="@layout/fragment_freeboard" />
+    <fragment
+        android:id="@+id/myEssayPage"
+        android:name="com.example.swengineering.MyEssayPage"
+        android:label="fragment_my_essay_page"
+        tools:layout="@layout/fragment_my_essay_page" />
+    <fragment
+        android:id="@+id/message_main"
+        android:name="com.example.swengineering.Message_main"
+        android:label="fragment_message_main"
+        tools:layout="@layout/fragment_message_main" />
+    <fragment
+        android:id="@+id/mypage"
+        android:name="com.example.swengineering.Mypage"
+        android:label="fragment_mypage"
+        tools:layout="@layout/fragment_mypage" />
 </navigation>

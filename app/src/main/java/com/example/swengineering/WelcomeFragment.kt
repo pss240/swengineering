@@ -62,7 +62,7 @@ class WelcomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedListe
         when(item.itemId) {
             R.id.button_welcome_MyEssay -> {
                 layout_drawer_welcome.closeDrawers()
-                println("Myessay")
+                navController.navigate(R.id.action_welcomeFragment_to_myEssayPage)
             }
             R.id.button_welcome_Anthology -> {
                 layout_drawer_welcome.closeDrawers()
@@ -73,13 +73,13 @@ class WelcomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedListe
                 layout_drawer_welcome.closeDrawers()
             }
             R.id.button_welcome_Message -> {
+                navController.navigate(R.id.action_welcomeFragment_to_message_main)
                 layout_drawer_welcome.closeDrawers()
-                println("Message")
 
             }
             R.id.button_welcome_MyPage -> {
+                navController.navigate(R.id.action_welcomeFragment_to_mypage)
                 layout_drawer_welcome.closeDrawers()
-                println("My Page")
             }
             R.id.button_welcome_Settings -> {
                 layout_drawer_welcome.closeDrawers()
