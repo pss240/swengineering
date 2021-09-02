@@ -55,35 +55,30 @@ class Mypage : Fragment(), NavigationView.OnNavigationItemSelectedListener {
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             R.id.button_welcome_MyEssay -> {
+                navController.navigate(R.id.action_mypage_to_myEssayPage)
                 layout_drawer_welcome.closeDrawers()
-                println("Myessay")
             }
             R.id.button_welcome_Anthology -> {
+                navController.navigate(R.id.action_mypage_to_anthologyFragment)
                 layout_drawer_welcome.closeDrawers()
-                navController.navigate(R.id.action_welcomeFragment_to_anthologyFragment)
             }
             R.id.button_welcome_Subscribe -> {
+                navController.navigate(R.id.action_mypage_to_subscribeFragment)
                 layout_drawer_welcome.closeDrawers()
-                println("Subscribe")
             }
             R.id.button_welcome_Message -> {
+                navController.navigate(R.id.action_mypage_to_message_main)
                 layout_drawer_welcome.closeDrawers()
-                println("Message")
-
             }
             R.id.button_welcome_MyPage -> {
+                navController.navigate(R.id.action_mypage_self)
                 layout_drawer_welcome.closeDrawers()
-                println("My Page")
             }
             R.id.button_welcome_Settings -> {
                 layout_drawer_welcome.closeDrawers()
-                println("Settings")
-
             }
             R.id.button_welcome_Notice -> {
                 layout_drawer_welcome.closeDrawers()
-                println("Notice")
-
             }
             R.id.button_welcome_test -> {
                 layout_drawer_welcome.closeDrawers()

@@ -57,7 +57,23 @@
     <fragment
         android:id="@+id/writeEssay"
         android:name="com.example.swengineering.WriteEssay"
-        android:label="WriteEssay" />
+        android:label="WriteEssay" >
+        <action
+            android:id="@+id/action_writeEssay_to_myEssayPage"
+            app:destination="@id/myEssayPage" />
+        <action
+            android:id="@+id/action_writeEssay_to_anthologyFragment"
+            app:destination="@id/anthologyFragment" />
+        <action
+            android:id="@+id/action_writeEssay_to_subscribeFragment"
+            app:destination="@id/subscribeFragment" />
+        <action
+            android:id="@+id/action_writeEssay_to_message_main"
+            app:destination="@id/message_main" />
+        <action
+            android:id="@+id/action_writeEssay_to_mypage"
+            app:destination="@id/mypage" />
+    </fragment>
     <fragment
         android:id="@+id/subscribeFragment"
         android:name="com.example.swengineering.SubscribeFragment"
@@ -65,6 +81,21 @@
         <action
             android:id="@+id/action_subscribeFragment_to_subscriberFragment"
             app:destination="@id/subscriberFragment" />
+        <action
+            android:id="@+id/action_subscribeFragment_to_myEssayPage"
+            app:destination="@id/myEssayPage" />
+        <action
+            android:id="@+id/action_subscribeFragment_to_anthologyFragment"
+            app:destination="@id/anthologyFragment" />
+        <action
+            android:id="@+id/action_subscribeFragment_self"
+            app:destination="@id/subscribeFragment" />
+        <action
+            android:id="@+id/action_subscribeFragment_to_message_main"
+            app:destination="@id/message_main" />
+        <action
+            android:id="@+id/action_subscribeFragment_to_mypage"
+            app:destination="@id/mypage" />
     </fragment>
     <fragment
         android:id="@+id/subscriberFragment"
@@ -73,30 +104,197 @@
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.swengineering.ProfileFragment"
-        android:label="ProfileFragment" />
+        android:label="ProfileFragment" >
+        <action
+            android:id="@+id/action_profileFragment_to_myEssayPage"
+            app:destination="@id/myEssayPage" />
+        <action
+            android:id="@+id/action_profileFragment_to_anthologyFragment"
+            app:destination="@id/anthologyFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_subscribeFragment"
+            app:destination="@id/subscribeFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_message_main"
+            app:destination="@id/message_main" />
+        <action
+            android:id="@+id/action_profileFragment_to_mypage"
+            app:destination="@id/mypage" />
+    </fragment>
     <fragment
         android:id="@+id/todayTopicFragment"
         android:name="com.example.swengineering.TodayTopicFragment"
         android:label="fragment_today_topic"
-        tools:layout="@layout/fragment_today_topic" />
+        tools:layout="@layout/fragment_today_topic" >
+        <action
+            android:id="@+id/action_todayTopicFragment_to_myEssayPage"
+            app:destination="@id/myEssayPage" />
+        <action
+            android:id="@+id/action_todayTopicFragment_to_anthologyFragment"
+            app:destination="@id/anthologyFragment" />
+        <action
+            android:id="@+id/action_todayTopicFragment_to_subscribeFragment"
+            app:destination="@id/subscribeFragment" />
+        <action
+            android:id="@+id/action_todayTopicFragment_to_message_main"
+            app:destination="@id/message_main" />
+        <action
+            android:id="@+id/action_todayTopicFragment_to_mypage"
+            app:destination="@id/mypage" />
+        <action
+            android:id="@+id/action_todayTopicFragment_to_essay_viewer"
+            app:destination="@id/essay_viewer" />
+    </fragment>
     <fragment
         android:id="@+id/freeboard"
         android:name="com.example.swengineering.Freeboard"
         android:label="fragment_freeboard"
-        tools:layout="@layout/fragment_freeboard" />
+        tools:layout="@layout/fragment_freeboard" >
+        <action
+            android:id="@+id/action_freeboard_to_myEssayPage"
+            app:destination="@id/myEssayPage" />
+        <action
+            android:id="@+id/action_freeboard_to_anthologyFragment"
+            app:destination="@id/anthologyFragment" />
+        <action
+            android:id="@+id/action_freeboard_to_subscribeFragment"
+            app:destination="@id/subscribeFragment" />
+        <action
+            android:id="@+id/action_freeboard_to_message_main"
+            app:destination="@id/message_main" />
+        <action
+            android:id="@+id/action_freeboard_to_mypage"
+            app:destination="@id/mypage" />
+    </fragment>
     <fragment
         android:id="@+id/myEssayPage"
         android:name="com.example.swengineering.MyEssayPage"
         android:label="fragment_my_essay_page"
-        tools:layout="@layout/fragment_my_essay_page" />
+        tools:layout="@layout/fragment_my_essay_page" >
+        <action
+            android:id="@+id/action_myEssayPage_self"
+            app:destination="@id/myEssayPage" />
+        <action
+            android:id="@+id/action_myEssayPage_to_anthologyFragment"
+            app:destination="@id/anthologyFragment" />
+        <action
+            android:id="@+id/action_myEssayPage_to_subscribeFragment"
+            app:destination="@id/subscribeFragment" />
+        <action
+            android:id="@+id/action_myEssayPage_to_message_main"
+            app:destination="@id/message_main" />
+        <action
+            android:id="@+id/action_myEssayPage_to_mypage"
+            app:destination="@id/mypage" />
+    </fragment>
     <fragment
         android:id="@+id/message_main"
         android:name="com.example.swengineering.Message_main"
         android:label="fragment_message_main"
-        tools:layout="@layout/fragment_message_main" />
+        tools:layout="@layout/fragment_message_main" >
+        <action
+            android:id="@+id/action_message_main_to_myEssayPage"
+            app:destination="@id/myEssayPage" />
+        <action
+            android:id="@+id/action_message_main_to_anthologyFragment"
+            app:destination="@id/anthologyFragment" />
+        <action
+            android:id="@+id/action_message_main_to_subscribeFragment"
+            app:destination="@id/subscribeFragment" />
+        <action
+            android:id="@+id/action_message_main_self"
+            app:destination="@id/message_main" />
+        <action
+            android:id="@+id/action_message_main_to_mypage"
+            app:destination="@id/mypage" />
+    </fragment>
     <fragment
         android:id="@+id/mypage"
         android:name="com.example.swengineering.Mypage"
         android:label="fragment_mypage"
-        tools:layout="@layout/fragment_mypage" />
+        tools:layout="@layout/fragment_mypage" >
+        <action
+            android:id="@+id/action_mypage_to_myEssayPage"
+            app:destination="@id/myEssayPage" />
+        <action
+            android:id="@+id/action_mypage_to_anthologyFragment"
+            app:destination="@id/anthologyFragment" />
+        <action
+            android:id="@+id/action_mypage_to_subscribeFragment"
+            app:destination="@id/subscribeFragment" />
+        <action
+            android:id="@+id/action_mypage_to_message_main"
+            app:destination="@id/message_main" />
+        <action
+            android:id="@+id/action_mypage_self"
+            app:destination="@id/mypage" />
+    </fragment>
+    <fragment
+        android:id="@+id/essay_viewer"
+        android:name="com.example.swengineering.Essay_viewer"
+        android:label="fragment_essay_viewer"
+        tools:layout="@layout/fragment_essay_viewer" >
+        <action
+            android:id="@+id/action_essay_viewer_to_myEssayPage"
+            app:destination="@id/myEssayPage" />
+        <action
+            android:id="@+id/action_essay_viewer_to_anthologyFragment"
+            app:destination="@id/anthologyFragment" />
+        <action
+            android:id="@+id/action_essay_viewer_to_subscribeFragment"
+            app:destination="@id/subscribeFragment" />
+        <action
+            android:id="@+id/action_essay_viewer_to_message_main"
+            app:destination="@id/message_main" />
+        <action
+            android:id="@+id/action_essay_viewer_to_mypage"
+            app:destination="@id/mypage" />
+    </fragment>
+    <fragment
+        android:id="@+id/message_chat_list"
+        android:name="com.example.swengineering.Message_chat_list"
+        android:label="fragment_message_chat_list"
+        tools:layout="@layout/fragment_message_chat_list" >
+        <action
+            android:id="@+id/action_message_chat_list_to_myEssayPage"
+            app:destination="@id/myEssayPage" />
+        <action
+            android:id="@+id/action_message_chat_list_to_anthologyFragment"
+            app:destination="@id/anthologyFragment" />
+        <action
+            android:id="@+id/action_message_chat_list_to_subscribeFragment"
+            app:destination="@id/subscribeFragment" />
+        <action
+            android:id="@+id/action_message_chat_list_to_message_main"
+            app:destination="@id/message_main" />
+        <action
+            android:id="@+id/action_message_chat_list_to_mypage"
+            app:destination="@id/mypage" />
+    </fragment>
+    <fragment
+        android:id="@+id/message_send"
+        android:name="com.example.swengineering.Message_send"
+        android:label="fragment_message_send"
+        tools:layout="@layout/fragment_message_send" >
+        <action
+            android:id="@+id/action_message_send_to_myEssayPage"
+            app:destination="@id/myEssayPage" />
+        <action
+            android:id="@+id/action_message_send_to_anthologyFragment"
+            app:destination="@id/anthologyFragment" />
+        <action
+            android:id="@+id/action_message_send_to_subscribeFragment"
+            app:destination="@id/subscribeFragment" />
+        <action
+            android:id="@+id/action_message_send_to_message_main"
+            app:destination="@id/message_main" />
+        <action
+            android:id="@+id/action_message_send_to_mypage"
+            app:destination="@id/mypage" />
+    </fragment>
+    <fragment
+        android:id="@+id/message_viewer"
+        android:name="com.example.swengineering.Message_viewer"
+        android:label="fragment_message_viewer"
+        tools:layout="@layout/fragment_message_viewer" />
 </navigation>

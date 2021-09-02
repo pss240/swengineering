@@ -11,6 +11,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.navigation.NavigationView
+import kotlinx.android.synthetic.main.fragment_freeboard.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.fragment_welcome.button_welcome_drawmenu
 import kotlinx.android.synthetic.main.fragment_welcome.layout_drawer_welcome
@@ -66,35 +67,30 @@ class ProfileFragment : Fragment(), NavigationView.OnNavigationItemSelectedListe
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             R.id.button_welcome_MyEssay -> {
+                navController.navigate(R.id.action_profileFragment_to_myEssayPage)
                 layout_drawer_welcome.closeDrawers()
-                println("Myessay")
             }
             R.id.button_welcome_Anthology -> {
+                navController.navigate(R.id.action_profileFragment_to_anthologyFragment)
                 layout_drawer_welcome.closeDrawers()
-                navController.navigate(R.id.action_welcomeFragment_to_anthologyFragment)
             }
             R.id.button_welcome_Subscribe -> {
+                navController.navigate(R.id.action_profileFragment_to_subscribeFragment)
                 layout_drawer_welcome.closeDrawers()
-                println("Subscribe")
             }
             R.id.button_welcome_Message -> {
+                navController.navigate(R.id.action_profileFragment_to_message_main)
                 layout_drawer_welcome.closeDrawers()
-                println("Message")
-
             }
             R.id.button_welcome_MyPage -> {
+                navController.navigate(R.id.action_profileFragment_to_mypage)
                 layout_drawer_welcome.closeDrawers()
-                println("My Page")
             }
             R.id.button_welcome_Settings -> {
                 layout_drawer_welcome.closeDrawers()
-                println("Settings")
-
             }
             R.id.button_welcome_Notice -> {
                 layout_drawer_welcome.closeDrawers()
-                println("Notice")
-
             }
             R.id.button_welcome_test -> {
                 layout_drawer_welcome.closeDrawers()

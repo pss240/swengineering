@@ -61,12 +61,12 @@ class WelcomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedListe
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             R.id.button_welcome_MyEssay -> {
-                layout_drawer_welcome.closeDrawers()
                 navController.navigate(R.id.action_welcomeFragment_to_myEssayPage)
+                layout_drawer_welcome.closeDrawers()
             }
             R.id.button_welcome_Anthology -> {
-                layout_drawer_welcome.closeDrawers()
                 navController.navigate(R.id.action_welcomeFragment_to_anthologyFragment)
+                layout_drawer_welcome.closeDrawers()
             }
             R.id.button_welcome_Subscribe -> {
                 navController.navigate(R.id.action_welcomeFragment_to_subscribeFragment)
@@ -75,7 +75,6 @@ class WelcomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedListe
             R.id.button_welcome_Message -> {
                 navController.navigate(R.id.action_welcomeFragment_to_message_main)
                 layout_drawer_welcome.closeDrawers()
-
             }
             R.id.button_welcome_MyPage -> {
                 navController.navigate(R.id.action_welcomeFragment_to_mypage)
@@ -83,12 +82,9 @@ class WelcomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedListe
             }
             R.id.button_welcome_Settings -> {
                 layout_drawer_welcome.closeDrawers()
-                println("Settings")
-
             }
             R.id.button_welcome_Notice -> {
                 layout_drawer_welcome.closeDrawers()
-                println("Notice")
             }
             R.id.button_welcome_test -> {
                 layout_drawer_welcome.closeDrawers()
