@@ -66,6 +66,7 @@ class Freeboard : Fragment(), NavigationView.OnNavigationItemSelectedListener {
 
         recyclerview_Freeboard.layoutManager = LinearLayoutManager(requireContext())
         recyclerview_Freeboard.adapter = CustomAdapter_Freeboard(item,requireContext())
+        print("test")
 
     }
 
