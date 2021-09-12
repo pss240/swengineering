@@ -91,20 +91,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_baseline_chat_bubble_24"
-            app:layout_constraintBottom_toTopOf="@+id/listView_essay_viewer_comment"
+            app:layout_constraintBottom_toTopOf="@+id/recycleView_essay_viewer_comment"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.713"
             app:layout_constraintStart_toEndOf="@+id/button_essay_viewer_like"
             app:layout_constraintTop_toBottomOf="@+id/textView_essay_viewer_text"
             app:layout_constraintVertical_bias="0.755" />
 
-        <ListView
-            android:id="@+id/listView_essay_viewer_comment"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycleView_essay_viewer_comment"
             android:layout_width="356dp"
             android:layout_height="200dp"
             android:layout_marginTop="68dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.49"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_essay_viewer_text" />
 
@@ -116,7 +115,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.2"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/listView_essay_viewer_comment" />
+            app:layout_constraintTop_toBottomOf="@+id/recycleView_essay_viewer_comment" />
 
         <Button
             android:layout_width="wrap_content"
@@ -126,7 +125,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.345"
             app:layout_constraintStart_toEndOf="@+id/editText_essay_viewer_write_comment"
-            app:layout_constraintTop_toBottomOf="@+id/listView_essay_viewer_comment" />
+            app:layout_constraintTop_toBottomOf="@+id/recycleView_essay_viewer_comment" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.navigation.NavigationView

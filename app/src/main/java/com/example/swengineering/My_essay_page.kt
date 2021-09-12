@@ -87,10 +87,10 @@ class MyEssayPage : Fragment(), NavigationView.OnNavigationItemSelectedListener 
         naviview_Welcome.setNavigationItemSelectedListener(this)
 
         recyclerview_my_essay_todays_topic.layoutManager = LinearLayoutManager(requireContext())
-        recyclerview_my_essay_todays_topic.adapter = CustomAdapter_My_essay_page(item,requireContext())
+        recyclerview_my_essay_todays_topic.adapter = CustomAdapter_My_essay_page(item,requireContext(), view)
 
         recyclerview_my_essay_free_topic.layoutManager = LinearLayoutManager(requireContext())
-        recyclerview_my_essay_free_topic.adapter = CustomAdapter_My_essay_page(item_free,requireContext())
+        recyclerview_my_essay_free_topic.adapter = CustomAdapter_My_essay_page(item_free,requireContext(), view)
 
     }
 

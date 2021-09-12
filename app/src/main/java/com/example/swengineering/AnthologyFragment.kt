@@ -52,7 +52,7 @@ class AnthologyFragment : Fragment() {
 
             )
         recyclerview_Anthology.layoutManager = LinearLayoutManager(requireContext())
-        recyclerview_Anthology.adapter = CustomAdapter_Anthology(item,requireContext())
+        recyclerview_Anthology.adapter = CustomAdapter_Anthology(item,requireContext(),view)
     }
     companion object {
         fun newInstance(param1: String, param2: String) =

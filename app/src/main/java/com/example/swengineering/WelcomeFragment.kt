@@ -61,8 +61,8 @@ class WelcomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedListe
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             R.id.button_welcome_MyEssay -> {
-                navController.navigate(R.id.action_welcomeFragment_to_myEssayPage)
                 layout_drawer_welcome.closeDrawers()
+                navController.navigate(R.id.action_welcomeFragment_to_myEssayPage)
             }
             R.id.button_welcome_Anthology -> {
                 navController.navigate(R.id.action_welcomeFragment_to_anthologyFragment)

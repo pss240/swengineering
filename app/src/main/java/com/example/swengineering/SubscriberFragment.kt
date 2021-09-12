@@ -48,7 +48,7 @@ class SubscriberFragment : Fragment() {
             Data_Subscriber(R.drawable.ic_baseline_person_24,"User14"),
             )
         recyclerview_subscriber.layoutManager = LinearLayoutManager(requireContext())
-        recyclerview_subscriber.adapter = CustomAdapter_Subscriber(item,requireContext())
+        recyclerview_subscriber.adapter = CustomAdapter_Subscriber(item,requireContext(), view)
     }
     companion object {
         fun newInstance(param1: String, param2: String) =

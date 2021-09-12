@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.custom_list_subscirbe.view.*
 
@@ -20,7 +22,7 @@ class CustomViewHolder_Subscribe(v:View) : RecyclerView.ViewHolder(v){
 }
 
 
-class CustomAdapter_Subscribe (val DataList:ArrayList<Data_Subcribe>,val context:Context): RecyclerView.Adapter<CustomViewHolder_Subscribe>() {
+class CustomAdapter_Subscribe (val DataList:ArrayList<Data_Subcribe>,val context:Context, var view: View): RecyclerView.Adapter<CustomViewHolder_Subscribe>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder_Subscribe {
         val cellForRow = LayoutInflater.from(context).inflate(R.layout.custom_list_subscirbe,parent,false)
         return CustomViewHolder_Subscribe(cellForRow)
@@ -35,7 +37,8 @@ class CustomAdapter_Subscribe (val DataList:ArrayList<Data_Subcribe>,val context
         holder.comment.text = curData.comment
 
         holder.itemView.setOnClickListener{
-            Toast.makeText(context,curData.Title,Toast.LENGTH_SHORT).show()
+            var navController : NavController = Navigation.findNavController(view)//반드시 함수 안에서 네비 선언해줘야하나? 이거 계속 선언해줄텐데
+            navController.navigate(R.id.action_subscribeFragment_to_essay_viewer)
         }
     }
 

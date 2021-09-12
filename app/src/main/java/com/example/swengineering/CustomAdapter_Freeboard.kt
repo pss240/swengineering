@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.custom_list_anthology.view.*
 
@@ -18,7 +20,7 @@ class CustomViewHolder_Freeboard(v: View) : RecyclerView.ViewHolder(v){
 }
 
 
-class CustomAdapter_Freeboard (val DataList:ArrayList<Data_Freeboard>,val context: Context): RecyclerView.Adapter<CustomViewHolder_Freeboard>() {
+class CustomAdapter_Freeboard (val DataList:ArrayList<Data_Freeboard>,val context: Context, var view:View): RecyclerView.Adapter<CustomViewHolder_Freeboard>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder_Freeboard {
         val cellForRow = LayoutInflater.from(context).inflate(R.layout.custom_list_anthology,parent,false)
         return CustomViewHolder_Freeboard(cellForRow)
@@ -30,7 +32,8 @@ class CustomAdapter_Freeboard (val DataList:ArrayList<Data_Freeboard>,val contex
         holder.name.text = curData.name
         holder.thumb.text = curData.thumb
         holder.itemView.setOnClickListener{
-            Toast.makeText(context,curData.Title, Toast.LENGTH_SHORT).show()
+            var navController : NavController = Navigation.findNavController(view)
+            navController.navigate(R.id.action_freeboard_to_essay_viewer)
         }
     }
 

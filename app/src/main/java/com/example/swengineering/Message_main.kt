@@ -82,10 +82,10 @@ class Message_main : Fragment(), NavigationView.OnNavigationItemSelectedListener
         naviview_Welcome.setNavigationItemSelectedListener(this)
 
         recyclerview_message_subscriber.layoutManager = LinearLayoutManager(requireContext()).also { it.orientation = LinearLayoutManager.HORIZONTAL }
-        recyclerview_message_subscriber.adapter = CustomAdapter_Message_Main_Profile(item,requireContext())
+        recyclerview_message_subscriber.adapter = CustomAdapter_Message_Main_Profile(item,requireContext(),view)
 
         recyclerview_message_log.layoutManager = LinearLayoutManager(requireContext())
-        recyclerview_message_log.adapter = CustomAdapter_Message_Main_Log(item_log,requireContext())
+        recyclerview_message_log.adapter = CustomAdapter_Message_Main_Log(item_log,requireContext(),view)
 
     }
 

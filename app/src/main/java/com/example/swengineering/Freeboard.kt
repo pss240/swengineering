@@ -65,8 +65,12 @@ class Freeboard : Fragment(), NavigationView.OnNavigationItemSelectedListener {
         naviview_Welcome.setNavigationItemSelectedListener(this)
 
         recyclerview_Freeboard.layoutManager = LinearLayoutManager(requireContext())
-        recyclerview_Freeboard.adapter = CustomAdapter_Freeboard(item,requireContext())
-        print("test")
+        recyclerview_Freeboard.adapter = CustomAdapter_Freeboard(item,requireContext(),view)
+
+        button_write_freetopic_essay.setOnClickListener {
+            navController.navigate(R.id.action_freeboard_to_writeEssay)
+        }
+
 
     }
 

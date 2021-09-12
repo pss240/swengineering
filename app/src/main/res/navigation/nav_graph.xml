@@ -53,7 +53,11 @@
         android:id="@+id/anthologyFragment"
         android:name="com.example.swengineering.AnthologyFragment"
         android:label="fragment_anthology"
-        tools:layout="@layout/fragment_anthology" />
+        tools:layout="@layout/fragment_anthology" >
+        <action
+            android:id="@+id/action_anthologyFragment_to_essay_viewer"
+            app:destination="@id/essay_viewer" />
+    </fragment>
     <fragment
         android:id="@+id/writeEssay"
         android:name="com.example.swengineering.WriteEssay"
@@ -96,11 +100,18 @@
         <action
             android:id="@+id/action_subscribeFragment_to_mypage"
             app:destination="@id/mypage" />
+        <action
+            android:id="@+id/action_subscribeFragment_to_essay_viewer"
+            app:destination="@id/essay_viewer" />
     </fragment>
     <fragment
         android:id="@+id/subscriberFragment"
         android:name="com.example.swengineering.SubscriberFragment"
-        android:label="SubscriberFragment" />
+        android:label="SubscriberFragment" >
+        <action
+            android:id="@+id/action_subscriberFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.swengineering.ProfileFragment"
@@ -120,6 +131,9 @@
         <action
             android:id="@+id/action_profileFragment_to_mypage"
             app:destination="@id/mypage" />
+        <action
+            android:id="@+id/action_profileFragment_to_essay_viewer"
+            app:destination="@id/essay_viewer" />
     </fragment>
     <fragment
         android:id="@+id/todayTopicFragment"
@@ -165,6 +179,12 @@
         <action
             android:id="@+id/action_freeboard_to_mypage"
             app:destination="@id/mypage" />
+        <action
+            android:id="@+id/action_freeboard_to_essay_viewer"
+            app:destination="@id/essay_viewer" />
+        <action
+            android:id="@+id/action_freeboard_to_writeEssay"
+            app:destination="@id/writeEssay" />
     </fragment>
     <fragment
         android:id="@+id/myEssayPage"
@@ -186,6 +206,9 @@
         <action
             android:id="@+id/action_myEssayPage_to_mypage"
             app:destination="@id/mypage" />
+        <action
+            android:id="@+id/action_myEssayPage_to_essay_viewer"
+            app:destination="@id/essay_viewer" />
     </fragment>
     <fragment
         android:id="@+id/message_main"
@@ -207,6 +230,12 @@
         <action
             android:id="@+id/action_message_main_to_mypage"
             app:destination="@id/mypage" />
+        <action
+            android:id="@+id/action_message_main_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_message_main_to_message_chat_list"
+            app:destination="@id/message_chat_list" />
     </fragment>
     <fragment
         android:id="@+id/mypage"
@@ -270,6 +299,9 @@
         <action
             android:id="@+id/action_message_chat_list_to_mypage"
             app:destination="@id/mypage" />
+        <action
+            android:id="@+id/action_message_chat_list_to_message_viewer"
+            app:destination="@id/message_viewer" />
     </fragment>
     <fragment
         android:id="@+id/message_send"
@@ -296,5 +328,9 @@
         android:id="@+id/message_viewer"
         android:name="com.example.swengineering.Message_viewer"
         android:label="fragment_message_viewer"
-        tools:layout="@layout/fragment_message_viewer" />
+        tools:layout="@layout/fragment_message_viewer" >
+        <action
+            android:id="@+id/action_message_viewer_to_message_send"
+            app:destination="@id/message_send" />
+    </fragment>
 </navigation>

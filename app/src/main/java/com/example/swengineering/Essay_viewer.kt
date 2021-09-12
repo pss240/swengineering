@@ -9,8 +9,13 @@ import android.view.ViewGroup
 import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.navigation.NavigationView
+import kotlinx.android.synthetic.main.fragment_essay_viewer.*
 import kotlinx.android.synthetic.main.fragment_welcome.*
+import kotlinx.android.synthetic.main.fragment_welcome.button_welcome_drawmenu
+import kotlinx.android.synthetic.main.fragment_welcome.layout_drawer_welcome
+import kotlinx.android.synthetic.main.fragment_welcome.naviview_Welcome
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -46,9 +51,26 @@ class Essay_viewer : Fragment(), NavigationView.OnNavigationItemSelectedListener
     lateinit var navController : NavController
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        var item = arrayListOf(
+            Data_Essay_viewer_comment("user1", "comment1"),
+            Data_Essay_viewer_comment("user2", "comment2"),
+            Data_Essay_viewer_comment("user3", "comment3"),
+            Data_Essay_viewer_comment("user4", "comment4"),
+            Data_Essay_viewer_comment("user5", "comment5"),
+            Data_Essay_viewer_comment("user6", "comment6"),
+            Data_Essay_viewer_comment("user7", "comment7"),
+            Data_Essay_viewer_comment("user8", "comment8"),
+            Data_Essay_viewer_comment("user9", "comment9"),
+            Data_Essay_viewer_comment("user10", "comment10"),
+            Data_Essay_viewer_comment("user11", "comment11"),
+        )
         navController = Navigation.findNavController(view)
         button_welcome_drawmenu.setOnClickListener{layout_drawer_welcome.openDrawer(GravityCompat.START)}
         naviview_Welcome.setNavigationItemSelectedListener(this)
+
+        recycleView_essay_viewer_comment.layoutManager = LinearLayoutManager(requireContext())
+        recycleView_essay_viewer_comment.adapter = CustomAdapter_Essay_viewer_comment(item, requireContext())
     }
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {

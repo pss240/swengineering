@@ -9,8 +9,13 @@ import android.view.ViewGroup
 import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.navigation.NavigationView
+import kotlinx.android.synthetic.main.fragment_message_chat_list.*
 import kotlinx.android.synthetic.main.fragment_welcome.*
+import kotlinx.android.synthetic.main.fragment_welcome.button_welcome_drawmenu
+import kotlinx.android.synthetic.main.fragment_welcome.layout_drawer_welcome
+import kotlinx.android.synthetic.main.fragment_welcome.naviview_Welcome
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -49,6 +54,28 @@ class Message_chat_list : Fragment(), NavigationView.OnNavigationItemSelectedLis
         navController = Navigation.findNavController(view)
         button_welcome_drawmenu.setOnClickListener{layout_drawer_welcome.openDrawer(GravityCompat.START)}
         naviview_Welcome.setNavigationItemSelectedListener(this)
+
+        var item = arrayListOf(
+            Data_Message_chat_list("send", "chatting"),
+            Data_Message_chat_list("post", "chatting"),
+            Data_Message_chat_list("send", "chatting"),
+            Data_Message_chat_list("post", "chatting"),
+            Data_Message_chat_list("send", "chatting"),
+            Data_Message_chat_list("post", "chatting"),
+            Data_Message_chat_list("send", "chatting"),
+            Data_Message_chat_list("post", "chatting"),
+            Data_Message_chat_list("send", "chatting"),
+            Data_Message_chat_list("post", "chatting"),
+            Data_Message_chat_list("send", "chatting"),
+            Data_Message_chat_list("post", "chatting"),
+            Data_Message_chat_list("send", "chatting"),
+        )
+
+
+        recyclerview_message_chat_list.layoutManager = LinearLayoutManager(requireContext())
+        recyclerview_message_chat_list.adapter = CustomAdapter_Message_chat_list(item, requireContext(),view)
+
+
     }
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
@@ -87,14 +114,7 @@ class Message_chat_list : Fragment(), NavigationView.OnNavigationItemSelectedLis
     //메뉴 네비 끝부분
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment Message_chat_list.
-         */
+
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =

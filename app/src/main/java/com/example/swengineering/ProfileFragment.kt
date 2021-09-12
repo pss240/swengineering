@@ -62,7 +62,7 @@ class ProfileFragment : Fragment(), NavigationView.OnNavigationItemSelectedListe
             Data_Profile("Title13")
         )
         recyclerview_profile.layoutManager = LinearLayoutManager(requireContext())
-        recyclerview_profile.adapter = CustomAdapter_Profile(item,requireContext())
+        recyclerview_profile.adapter = CustomAdapter_Profile(item,requireContext(), view)
     }
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {

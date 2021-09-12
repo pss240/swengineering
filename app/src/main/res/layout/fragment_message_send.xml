@@ -71,15 +71,9 @@
             android:layout_width="356dp"
             android:layout_height="293dp"
             android:layout_marginTop="52dp"
-            android:ems="18"
             android:gravity="top"
-            android:inputType="text"
-            android:lines="1"
             android:hint="write message"
-            android:maxLength="200"
-            android:maxLines="10"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.454"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_userName" />
 

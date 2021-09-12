@@ -59,7 +59,7 @@ class SubscribeFragment : Fragment(), NavigationView.OnNavigationItemSelectedLis
             Data_Subcribe(R.drawable.ic_baseline_person_24,"Title12","Lorem hello my name is haha nnice to meet you how are you im fine thank you and you??","51","42"),
         )
         recyclerview_subscribe.layoutManager = LinearLayoutManager(requireContext())
-        recyclerview_subscribe.adapter = CustomAdapter_Subscribe(item,requireContext())
+        recyclerview_subscribe.adapter = CustomAdapter_Subscribe(item,requireContext(),view)
         imageButton_toSubscriber.setOnClickListener {
             navController.navigate(R.id.action_subscribeFragment_to_subscriberFragment)
         }

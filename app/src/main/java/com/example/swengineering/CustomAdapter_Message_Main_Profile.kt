@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.custom_message_subscriber_profile.view.*
 
@@ -16,7 +18,7 @@ class CustomViewHolder_Message_Main_Profile(v:View) : RecyclerView.ViewHolder(v)
 }
 
 class CustomAdapter_Message_Main_Profile (
-    val DataList: ArrayList<Data_Message_Main_Profile>, val context: Context
+    val DataList: ArrayList<Data_Message_Main_Profile>, val context: Context, val view: View
     ) : RecyclerView.Adapter<CustomViewHolder_Message_Main_Profile>(){
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -32,7 +34,8 @@ class CustomAdapter_Message_Main_Profile (
         holder.name.text = curData.name
 
         holder.itemView.setOnClickListener{
-            Toast.makeText(context,curData.name, Toast.LENGTH_SHORT).show()
+            var navController : NavController = Navigation.findNavController(view)
+            navController.navigate(R.id.action_message_main_to_profileFragment)
         }
     }
 
