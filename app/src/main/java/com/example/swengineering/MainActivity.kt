@@ -11,6 +11,5 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         //박찬영 깃 테스트
-        //이빛날
     }
 }
