@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <TextView
@@ -11,15 +12,13 @@
         android:layout_height="20dp"
         android:layout_marginTop="8dp"
         android:text="userName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView_custom_essay_comment_content"
-        android:layout_width="311dp"
-        android:layout_height="wrap_content"
+        android:layout_width="301dp"
+        android:layout_height="23dp"
         android:text="댓글본문"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_custom_essay_comment_userName" />
@@ -28,11 +27,29 @@
         android:id="@+id/button_essay_viewer_comment_like"
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="4dp"
         android:src="@drawable/ic_baseline_thumb_up_24"
         android:text="Button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/textView_custom_essay_comment_content"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_comment_thumb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_essay_viewer_comment_like"
+        app:layout_constraintStart_toEndOf="@+id/textView_custom_essay_comment_content" />
+
+    <ImageButton
+        android:id="@+id/button_delete_comment"
+        android:layout_width="25dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="36dp"
+        app:layout_constraintStart_toEndOf="@+id/textView_custom_essay_comment_userName"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/delete" />
 </androidx.constraintlayout.widget.ConstraintLayout>

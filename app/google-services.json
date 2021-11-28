@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "280054639823",
+    "project_id": "swengi-7f53f",
+    "storage_bucket": "swengi-7f53f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:280054639823:android:13e0b2bb69012f7a4e9bba",
+        "android_client_info": {
+          "package_name": "com.example.swengineering"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "280054639823-pdc22lhhk6umj4bp0p7m3hpv6njnf0j9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArFjyLnUlYBWE7oeTaoBj5jOfmRmX3OXY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "280054639823-pdc22lhhk6umj4bp0p7m3hpv6njnf0j9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

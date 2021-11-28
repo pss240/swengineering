@@ -1,16 +1,27 @@
 package com.example.swengineering
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.swengineering.FB.FBRef
+import com.example.swengineering.FB.FBRef.Companion.database
+import com.example.swengineering.model.CommentModel
+import com.example.swengineering.model.EssayModel
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.fragment_essay_viewer.*
 import kotlinx.android.synthetic.main.fragment_welcome.*
 import kotlinx.android.synthetic.main.fragment_welcome.button_welcome_drawmenu
@@ -40,6 +51,18 @@ class Essay_viewer : Fragment(), NavigationView.OnNavigationItemSelectedListener
         }
     }
 
+    override fun onStop() {
+        super.onStop()
+        Log.d("Stop", "1")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("Destroy", "1")
+
+    }
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -49,29 +72,101 @@ class Essay_viewer : Fragment(), NavigationView.OnNavigationItemSelectedListener
     }
     //메뉴 네비게이션 코드 시작부
     lateinit var navController : NavController
+    lateinit var item2 : EssayModel
+    lateinit var comment_items : ArrayList<Data_Essay_viewer_comment>
+    lateinit var RCAdapter : CustomAdapter_Essay_viewer_comment
+
+    fun getdata(v : View){
+        FBRef.essaysRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+
+                item2 = dataSnapshot.child(essayKey).getValue(EssayModel::class.java)!!
+                Log.d("item2 after", item2.toString())
+
+
+                var tv1 = v.findViewById<TextView>(R.id.textView_essay_viewer_topic)
+                var tv2 = v.findViewById<TextView>(R.id.textView_essay_viewer_writer)
+                var tv3 = v.findViewById<TextView>(R.id.textView_essay_viewer_text)
+                var tv4 = v.findViewById<TextView>(R.id.textview_thumb)
+                tv1.setText(item2.title)
+                tv2.setText(item2.nickname)
+                tv3.setText(item2.body)
+                tv4.setText(item2.thumb)
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Failed to read value
+                Log.w("WelcomeFragment", "Failed to read value.", error.toException())
+            }
+        })
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        comment_items= arrayListOf()
 
-        var item = arrayListOf(
-            Data_Essay_viewer_comment("user1", "comment1"),
-            Data_Essay_viewer_comment("user2", "comment2"),
-            Data_Essay_viewer_comment("user3", "comment3"),
-            Data_Essay_viewer_comment("user4", "comment4"),
-            Data_Essay_viewer_comment("user5", "comment5"),
-            Data_Essay_viewer_comment("user6", "comment6"),
-            Data_Essay_viewer_comment("user7", "comment7"),
-            Data_Essay_viewer_comment("user8", "comment8"),
-            Data_Essay_viewer_comment("user9", "comment9"),
-            Data_Essay_viewer_comment("user10", "comment10"),
-            Data_Essay_viewer_comment("user11", "comment11"),
-        )
+
+
+        getdata(view)
+
+        button_essay_viewer_like.setOnClickListener {
+
+            FBRef.essaysRef.child(essayKey)
+                .setValue(
+                    EssayModel(
+                        item2.title,
+                        item2.body,
+                        item2.uid,
+                        item2.nickname,
+                        item2.time,
+                        (item2.thumb.toInt() + 1).toString()
+                    )
+                )
+
+//            textview_thumb.setText((item2.thumb.toInt() + 1).toString())
+        }
+        button_comment_plus.setOnClickListener {
+            FBRef.commentRef
+                .child(essayKey)
+                .push()
+                .setValue(
+                    CommentModel(nickname,editText_essay_viewer_write_comment.text.toString(),"0")
+                )
+        }
         navController = Navigation.findNavController(view)
         button_welcome_drawmenu.setOnClickListener{layout_drawer_welcome.openDrawer(GravityCompat.START)}
         naviview_Welcome.setNavigationItemSelectedListener(this)
 
+        comment_getdata()
+
+        RCAdapter = CustomAdapter_Essay_viewer_comment(comment_items,requireContext())
         recycleView_essay_viewer_comment.layoutManager = LinearLayoutManager(requireContext())
-        recycleView_essay_viewer_comment.adapter = CustomAdapter_Essay_viewer_comment(item, requireContext())
+        recycleView_essay_viewer_comment.adapter = RCAdapter
     }
+
+
+    fun comment_getdata(){
+        FBRef.commentRef.child(essayKey).addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                comment_items.clear()
+                for(dataModel in dataSnapshot.children){
+                    val item = dataModel.getValue(CommentModel::class.java)
+                    comment_items.add(Data_Essay_viewer_comment(item!!.commentNick,item!!.commentBody,item!!.commentThumb,dataModel.key!!))
+                }
+
+                RCAdapter.notifyDataSetChanged()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Failed to read value
+                Log.w("WelcomeFragment", "Failed to read value.", error.toException())
+            }
+        })
+    }
+
+
+
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             R.id.button_welcome_MyEssay -> {

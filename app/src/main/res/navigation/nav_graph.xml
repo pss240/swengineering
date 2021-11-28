@@ -158,6 +158,9 @@
         <action
             android:id="@+id/action_todayTopicFragment_to_essay_viewer"
             app:destination="@id/essay_viewer" />
+        <action
+            android:id="@+id/action_todayTopicFragment_to_writeEssay"
+            app:destination="@id/writeEssay" />
     </fragment>
     <fragment
         android:id="@+id/freeboard"
