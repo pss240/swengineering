@@ -47,10 +47,6 @@ class Message_send : Fragment(), NavigationView.OnNavigationItemSelectedListener
                 navController.navigate(R.id.action_message_send_to_myEssayPage)
                 layout_drawer_welcome.closeDrawers()
             }
-            R.id.button_welcome_Anthology -> {
-                navController.navigate(R.id.action_message_send_to_anthologyFragment)
-                layout_drawer_welcome.closeDrawers()
-            }
             R.id.button_welcome_Subscribe -> {
                 navController.navigate(R.id.action_message_send_to_subscribeFragment)
                 layout_drawer_welcome.closeDrawers()
@@ -59,17 +55,10 @@ class Message_send : Fragment(), NavigationView.OnNavigationItemSelectedListener
                 navController.navigate(R.id.action_message_send_to_message_main)
                 layout_drawer_welcome.closeDrawers()
             }
-            R.id.button_welcome_MyPage -> {
-                navController.navigate(R.id.action_message_send_to_mypage)
-                layout_drawer_welcome.closeDrawers()
-            }
             R.id.button_welcome_Settings -> {
                 layout_drawer_welcome.closeDrawers()
             }
             R.id.button_welcome_Notice -> {
-                layout_drawer_welcome.closeDrawers()
-            }
-            R.id.button_welcome_test -> {
                 layout_drawer_welcome.closeDrawers()
             }
         }

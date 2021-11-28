@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -32,7 +33,7 @@ private const val ARG_PARAM2 = "param2"
 class WriteEssay : Fragment(), NavigationView.OnNavigationItemSelectedListener {
     private var param1: String? = null
     private var param2: String? = null
-
+    private var thumb : String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,15 +56,47 @@ class WriteEssay : Fragment(), NavigationView.OnNavigationItemSelectedListener {
         navController = Navigation.findNavController(view)
         button_welcome_drawmenu.setOnClickListener{layout_drawer_welcome.openDrawer(GravityCompat.START)}
         naviview_Welcome.setNavigationItemSelectedListener(this)
+        var item : EssayModel
+        var chk = 0
+
+        if(essayKey != ""){
+
+            FBRef.essaysRef.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    if(chk == 0) {
+                        item = dataSnapshot.child(essayKey).getValue(EssayModel::class.java)!!
+                        Log.d("item2 after", item.toString())
+
+                        input_TopicName.setText(item.title)
+                        input_TopicContents.setText(item.body)
+                        thumb = item.thumb
+
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    // Failed to read value
+                    Log.w("WelcomeFragment", "Failed to read value.", error.toException())
+                }
+            })
+        }
 
         button_write_essay_save.setOnClickListener {
             val title = input_TopicName.text.toString()
             val body = input_TopicContents.text.toString()
             var uid = FBAuth.getUid()
             val time = FBAuth.getTime()
+            chk = 1
 //            textView_TodayTopic.setText(topic[now.dayOfMonth%3]) // 토픽
 
-            FBRef.essaysRef.push().setValue(EssayModel(title,body,uid, nickname,time,"0"))
+
+            if(essayKey == "")
+                FBRef.essaysRef.push().setValue(EssayModel(title, body, uid, nickname, time, "0"))
+            else
+                FBRef.essaysRef.child(essayKey).setValue(EssayModel(title, body, uid, nickname, time,thumb!!))
+
+            navController.popBackStack()
+
         }
     }
 
@@ -71,10 +104,6 @@ class WriteEssay : Fragment(), NavigationView.OnNavigationItemSelectedListener {
         when(item.itemId) {
             R.id.button_welcome_MyEssay -> {
                 navController.navigate(R.id.action_writeEssay_to_myEssayPage)
-                layout_drawer_welcome.closeDrawers()
-            }
-            R.id.button_welcome_Anthology -> {
-                navController.navigate(R.id.action_writeEssay_to_anthologyFragment)
                 layout_drawer_welcome.closeDrawers()
             }
             R.id.button_welcome_Subscribe -> {
@@ -85,17 +114,11 @@ class WriteEssay : Fragment(), NavigationView.OnNavigationItemSelectedListener {
                 navController.navigate(R.id.action_writeEssay_to_message_main)
                 layout_drawer_welcome.closeDrawers()
             }
-            R.id.button_welcome_MyPage -> {
-                navController.navigate(R.id.action_writeEssay_to_mypage)
-                layout_drawer_welcome.closeDrawers()
-            }
+
             R.id.button_welcome_Settings -> {
                 layout_drawer_welcome.closeDrawers()
             }
             R.id.button_welcome_Notice -> {
-                layout_drawer_welcome.closeDrawers()
-            }
-            R.id.button_welcome_test -> {
                 layout_drawer_welcome.closeDrawers()
             }
         }

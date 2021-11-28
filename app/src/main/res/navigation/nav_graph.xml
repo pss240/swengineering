@@ -9,7 +9,11 @@
         android:id="@+id/joinFragment"
         android:name="com.example.swengineering.JoinFragment"
         android:label="fragment_join"
-        tools:layout="@layout/fragment_join" />
+        tools:layout="@layout/fragment_join" >
+        <action
+            android:id="@+id/action_joinFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.swengineering.LoginFragment"
@@ -28,35 +32,17 @@
         android:label="fragment_welcome"
         tools:layout="@layout/fragment_welcome" >
         <action
-            android:id="@+id/action_welcomeFragment_to_anthologyFragment"
-            app:destination="@id/anthologyFragment" />
-        <action
             android:id="@+id/action_welcomeFragment_to_todayTopicFragment"
             app:destination="@id/todayTopicFragment" />
         <action
             android:id="@+id/action_welcomeFragment_to_subscribeFragment"
             app:destination="@id/subscribeFragment" />
         <action
-            android:id="@+id/action_welcomeFragment_to_freeboard"
-            app:destination="@id/freeboard" />
-        <action
             android:id="@+id/action_welcomeFragment_to_myEssayPage"
             app:destination="@id/myEssayPage" />
         <action
             android:id="@+id/action_welcomeFragment_to_message_main"
             app:destination="@id/message_main" />
-        <action
-            android:id="@+id/action_welcomeFragment_to_mypage"
-            app:destination="@id/mypage" />
-    </fragment>
-    <fragment
-        android:id="@+id/anthologyFragment"
-        android:name="com.example.swengineering.AnthologyFragment"
-        android:label="fragment_anthology"
-        tools:layout="@layout/fragment_anthology" >
-        <action
-            android:id="@+id/action_anthologyFragment_to_essay_viewer"
-            app:destination="@id/essay_viewer" />
     </fragment>
     <fragment
         android:id="@+id/writeEssay"
@@ -66,17 +52,14 @@
             android:id="@+id/action_writeEssay_to_myEssayPage"
             app:destination="@id/myEssayPage" />
         <action
-            android:id="@+id/action_writeEssay_to_anthologyFragment"
-            app:destination="@id/anthologyFragment" />
-        <action
             android:id="@+id/action_writeEssay_to_subscribeFragment"
             app:destination="@id/subscribeFragment" />
         <action
             android:id="@+id/action_writeEssay_to_message_main"
             app:destination="@id/message_main" />
         <action
-            android:id="@+id/action_writeEssay_to_mypage"
-            app:destination="@id/mypage" />
+            android:id="@+id/action_writeEssay_to_todayTopicFragment"
+            app:destination="@id/todayTopicFragment" />
     </fragment>
     <fragment
         android:id="@+id/subscribeFragment"
@@ -89,17 +72,11 @@
             android:id="@+id/action_subscribeFragment_to_myEssayPage"
             app:destination="@id/myEssayPage" />
         <action
-            android:id="@+id/action_subscribeFragment_to_anthologyFragment"
-            app:destination="@id/anthologyFragment" />
-        <action
             android:id="@+id/action_subscribeFragment_self"
             app:destination="@id/subscribeFragment" />
         <action
             android:id="@+id/action_subscribeFragment_to_message_main"
             app:destination="@id/message_main" />
-        <action
-            android:id="@+id/action_subscribeFragment_to_mypage"
-            app:destination="@id/mypage" />
         <action
             android:id="@+id/action_subscribeFragment_to_essay_viewer"
             app:destination="@id/essay_viewer" />
@@ -107,34 +84,7 @@
     <fragment
         android:id="@+id/subscriberFragment"
         android:name="com.example.swengineering.SubscriberFragment"
-        android:label="SubscriberFragment" >
-        <action
-            android:id="@+id/action_subscriberFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.example.swengineering.ProfileFragment"
-        android:label="ProfileFragment" >
-        <action
-            android:id="@+id/action_profileFragment_to_myEssayPage"
-            app:destination="@id/myEssayPage" />
-        <action
-            android:id="@+id/action_profileFragment_to_anthologyFragment"
-            app:destination="@id/anthologyFragment" />
-        <action
-            android:id="@+id/action_profileFragment_to_subscribeFragment"
-            app:destination="@id/subscribeFragment" />
-        <action
-            android:id="@+id/action_profileFragment_to_message_main"
-            app:destination="@id/message_main" />
-        <action
-            android:id="@+id/action_profileFragment_to_mypage"
-            app:destination="@id/mypage" />
-        <action
-            android:id="@+id/action_profileFragment_to_essay_viewer"
-            app:destination="@id/essay_viewer" />
-    </fragment>
+        android:label="SubscriberFragment" />
     <fragment
         android:id="@+id/todayTopicFragment"
         android:name="com.example.swengineering.TodayTopicFragment"
@@ -144,49 +94,16 @@
             android:id="@+id/action_todayTopicFragment_to_myEssayPage"
             app:destination="@id/myEssayPage" />
         <action
-            android:id="@+id/action_todayTopicFragment_to_anthologyFragment"
-            app:destination="@id/anthologyFragment" />
-        <action
             android:id="@+id/action_todayTopicFragment_to_subscribeFragment"
             app:destination="@id/subscribeFragment" />
         <action
             android:id="@+id/action_todayTopicFragment_to_message_main"
             app:destination="@id/message_main" />
         <action
-            android:id="@+id/action_todayTopicFragment_to_mypage"
-            app:destination="@id/mypage" />
-        <action
             android:id="@+id/action_todayTopicFragment_to_essay_viewer"
             app:destination="@id/essay_viewer" />
         <action
             android:id="@+id/action_todayTopicFragment_to_writeEssay"
-            app:destination="@id/writeEssay" />
-    </fragment>
-    <fragment
-        android:id="@+id/freeboard"
-        android:name="com.example.swengineering.Freeboard"
-        android:label="fragment_freeboard"
-        tools:layout="@layout/fragment_freeboard" >
-        <action
-            android:id="@+id/action_freeboard_to_myEssayPage"
-            app:destination="@id/myEssayPage" />
-        <action
-            android:id="@+id/action_freeboard_to_anthologyFragment"
-            app:destination="@id/anthologyFragment" />
-        <action
-            android:id="@+id/action_freeboard_to_subscribeFragment"
-            app:destination="@id/subscribeFragment" />
-        <action
-            android:id="@+id/action_freeboard_to_message_main"
-            app:destination="@id/message_main" />
-        <action
-            android:id="@+id/action_freeboard_to_mypage"
-            app:destination="@id/mypage" />
-        <action
-            android:id="@+id/action_freeboard_to_essay_viewer"
-            app:destination="@id/essay_viewer" />
-        <action
-            android:id="@+id/action_freeboard_to_writeEssay"
             app:destination="@id/writeEssay" />
     </fragment>
     <fragment
@@ -198,17 +115,11 @@
             android:id="@+id/action_myEssayPage_self"
             app:destination="@id/myEssayPage" />
         <action
-            android:id="@+id/action_myEssayPage_to_anthologyFragment"
-            app:destination="@id/anthologyFragment" />
-        <action
             android:id="@+id/action_myEssayPage_to_subscribeFragment"
             app:destination="@id/subscribeFragment" />
         <action
             android:id="@+id/action_myEssayPage_to_message_main"
             app:destination="@id/message_main" />
-        <action
-            android:id="@+id/action_myEssayPage_to_mypage"
-            app:destination="@id/mypage" />
         <action
             android:id="@+id/action_myEssayPage_to_essay_viewer"
             app:destination="@id/essay_viewer" />
@@ -222,44 +133,14 @@
             android:id="@+id/action_message_main_to_myEssayPage"
             app:destination="@id/myEssayPage" />
         <action
-            android:id="@+id/action_message_main_to_anthologyFragment"
-            app:destination="@id/anthologyFragment" />
-        <action
             android:id="@+id/action_message_main_to_subscribeFragment"
             app:destination="@id/subscribeFragment" />
         <action
             android:id="@+id/action_message_main_self"
             app:destination="@id/message_main" />
         <action
-            android:id="@+id/action_message_main_to_mypage"
-            app:destination="@id/mypage" />
-        <action
-            android:id="@+id/action_message_main_to_profileFragment"
-            app:destination="@id/profileFragment" />
-        <action
             android:id="@+id/action_message_main_to_message_chat_list"
             app:destination="@id/message_chat_list" />
-    </fragment>
-    <fragment
-        android:id="@+id/mypage"
-        android:name="com.example.swengineering.Mypage"
-        android:label="fragment_mypage"
-        tools:layout="@layout/fragment_mypage" >
-        <action
-            android:id="@+id/action_mypage_to_myEssayPage"
-            app:destination="@id/myEssayPage" />
-        <action
-            android:id="@+id/action_mypage_to_anthologyFragment"
-            app:destination="@id/anthologyFragment" />
-        <action
-            android:id="@+id/action_mypage_to_subscribeFragment"
-            app:destination="@id/subscribeFragment" />
-        <action
-            android:id="@+id/action_mypage_to_message_main"
-            app:destination="@id/message_main" />
-        <action
-            android:id="@+id/action_mypage_self"
-            app:destination="@id/mypage" />
     </fragment>
     <fragment
         android:id="@+id/essay_viewer"
@@ -270,17 +151,14 @@
             android:id="@+id/action_essay_viewer_to_myEssayPage"
             app:destination="@id/myEssayPage" />
         <action
-            android:id="@+id/action_essay_viewer_to_anthologyFragment"
-            app:destination="@id/anthologyFragment" />
-        <action
             android:id="@+id/action_essay_viewer_to_subscribeFragment"
             app:destination="@id/subscribeFragment" />
         <action
             android:id="@+id/action_essay_viewer_to_message_main"
             app:destination="@id/message_main" />
         <action
-            android:id="@+id/action_essay_viewer_to_mypage"
-            app:destination="@id/mypage" />
+            android:id="@+id/action_essay_viewer_to_writeEssay"
+            app:destination="@id/writeEssay" />
     </fragment>
     <fragment
         android:id="@+id/message_chat_list"
@@ -291,17 +169,11 @@
             android:id="@+id/action_message_chat_list_to_myEssayPage"
             app:destination="@id/myEssayPage" />
         <action
-            android:id="@+id/action_message_chat_list_to_anthologyFragment"
-            app:destination="@id/anthologyFragment" />
-        <action
             android:id="@+id/action_message_chat_list_to_subscribeFragment"
             app:destination="@id/subscribeFragment" />
         <action
             android:id="@+id/action_message_chat_list_to_message_main"
             app:destination="@id/message_main" />
-        <action
-            android:id="@+id/action_message_chat_list_to_mypage"
-            app:destination="@id/mypage" />
         <action
             android:id="@+id/action_message_chat_list_to_message_viewer"
             app:destination="@id/message_viewer" />
@@ -315,17 +187,11 @@
             android:id="@+id/action_message_send_to_myEssayPage"
             app:destination="@id/myEssayPage" />
         <action
-            android:id="@+id/action_message_send_to_anthologyFragment"
-            app:destination="@id/anthologyFragment" />
-        <action
             android:id="@+id/action_message_send_to_subscribeFragment"
             app:destination="@id/subscribeFragment" />
         <action
             android:id="@+id/action_message_send_to_message_main"
             app:destination="@id/message_main" />
-        <action
-            android:id="@+id/action_message_send_to_mypage"
-            app:destination="@id/mypage" />
     </fragment>
     <fragment
         android:id="@+id/message_viewer"

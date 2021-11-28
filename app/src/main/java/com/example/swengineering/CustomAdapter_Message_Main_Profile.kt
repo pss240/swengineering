@@ -35,7 +35,7 @@ class CustomAdapter_Message_Main_Profile (
 
         holder.itemView.setOnClickListener{
             var navController : NavController = Navigation.findNavController(view)
-            navController.navigate(R.id.action_message_main_to_profileFragment)
+            //navController.navigate(R.id.action_message_main_to_profileFragment)
         }
     }
 

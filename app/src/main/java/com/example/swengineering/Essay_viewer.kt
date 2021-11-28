@@ -8,10 +8,12 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.swengineering.FB.FBAuth
 import com.example.swengineering.FB.FBRef
 import com.example.swengineering.FB.FBRef.Companion.database
 import com.example.swengineering.model.CommentModel
@@ -80,19 +82,20 @@ class Essay_viewer : Fragment(), NavigationView.OnNavigationItemSelectedListener
         FBRef.essaysRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
-                item2 = dataSnapshot.child(essayKey).getValue(EssayModel::class.java)!!
-                Log.d("item2 after", item2.toString())
+                if(dataSnapshot.child(essayKey).hasChildren()) {
 
+                        item2 = dataSnapshot.child(essayKey).getValue(EssayModel::class.java)!!
+                        Log.d("item2 after", item2.toString())
 
-                var tv1 = v.findViewById<TextView>(R.id.textView_essay_viewer_topic)
-                var tv2 = v.findViewById<TextView>(R.id.textView_essay_viewer_writer)
-                var tv3 = v.findViewById<TextView>(R.id.textView_essay_viewer_text)
-                var tv4 = v.findViewById<TextView>(R.id.textview_thumb)
-                tv1.setText(item2.title)
-                tv2.setText(item2.nickname)
-                tv3.setText(item2.body)
-                tv4.setText(item2.thumb)
-
+                        var tv1 = v.findViewById<TextView>(R.id.textView_essay_viewer_topic)
+                        var tv2 = v.findViewById<TextView>(R.id.textView_essay_viewer_writer)
+                        var tv3 = v.findViewById<TextView>(R.id.textView_essay_viewer_text)
+                        var tv4 = v.findViewById<TextView>(R.id.textview_thumb)
+                        tv1.setText(item2.title)
+                        tv2.setText(item2.nickname)
+                        tv3.setText(item2.body)
+                        tv4.setText(item2.thumb)
+                    }
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -109,6 +112,25 @@ class Essay_viewer : Fragment(), NavigationView.OnNavigationItemSelectedListener
 
 
         getdata(view)
+
+        button_essay_update.setOnClickListener {
+            if(FBAuth.getUid() == item2.uid) {
+                navController.navigate(R.id.action_essay_viewer_to_writeEssay)
+            }
+            else
+                Toast.makeText(it.context, "권한이 없습니다", Toast.LENGTH_SHORT).show()
+
+        }
+
+        button_essay_delete.setOnClickListener {
+            if(FBAuth.getUid() == item2.uid) {
+                FBRef.essaysRef.child(essayKey).removeValue()
+                Toast.makeText(it.context, "삭제 성공", Toast.LENGTH_SHORT).show()
+                navController.popBackStack()
+            }
+            else
+                Toast.makeText(it.context, "권한이 없습니다", Toast.LENGTH_SHORT).show()
+        }
 
         button_essay_viewer_like.setOnClickListener {
 
@@ -173,10 +195,6 @@ class Essay_viewer : Fragment(), NavigationView.OnNavigationItemSelectedListener
                 navController.navigate(R.id.action_essay_viewer_to_myEssayPage)
                 layout_drawer_welcome.closeDrawers()
             }
-            R.id.button_welcome_Anthology -> {
-                navController.navigate(R.id.action_essay_viewer_to_anthologyFragment)
-                layout_drawer_welcome.closeDrawers()
-            }
             R.id.button_welcome_Subscribe -> {
                 navController.navigate(R.id.action_essay_viewer_to_subscribeFragment)
                 layout_drawer_welcome.closeDrawers()
@@ -185,17 +203,11 @@ class Essay_viewer : Fragment(), NavigationView.OnNavigationItemSelectedListener
                 navController.navigate(R.id.action_essay_viewer_to_message_main)
                 layout_drawer_welcome.closeDrawers()
             }
-            R.id.button_welcome_MyPage -> {
-                navController.navigate(R.id.action_essay_viewer_to_mypage)
-                layout_drawer_welcome.closeDrawers()
-            }
+
             R.id.button_welcome_Settings -> {
                 layout_drawer_welcome.closeDrawers()
             }
             R.id.button_welcome_Notice -> {
-                layout_drawer_welcome.closeDrawers()
-            }
-            R.id.button_welcome_test -> {
                 layout_drawer_welcome.closeDrawers()
             }
         }

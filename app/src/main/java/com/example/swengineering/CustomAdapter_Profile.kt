@@ -31,7 +31,7 @@ class CustomAdapter_Profile (val DataList:ArrayList<Data_Profile>,val context: C
         holder.Title.text = curData.Title
         holder.itemView.setOnClickListener{
             var navController : NavController = Navigation.findNavController(view)//반드시 함수 안에서 네비 선언해줘야하나? 이거 계속 선언해줄텐데
-            navController.navigate(R.id.action_profileFragment_to_essay_viewer)
+            //navController.navigate(R.id.action_profileFragment_to_essay_viewer)
         }
     }
 

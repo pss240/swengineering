@@ -13,18 +13,20 @@
         <entry key="..\:/Users/JJC/AndroidStudioProjects/SW_Project/app/src/main/res/layout/fragment_anthology.xml" value="0.1390625" />
         <entry key="..\:/Users/JJC/AndroidStudioProjects/SW_Project/app/src/main/res/layout/fragment_essay_viewer.xml" value="0.33" />
         <entry key="..\:/Users/JJC/AndroidStudioProjects/SW_Project/app/src/main/res/layout/fragment_freeboard.xml" value="0.20104166666666667" />
-        <entry key="..\:/Users/JJC/AndroidStudioProjects/SW_Project/app/src/main/res/layout/fragment_join.xml" value="0.20625" />
+        <entry key="..\:/Users/JJC/AndroidStudioProjects/SW_Project/app/src/main/res/layout/fragment_join.xml" value="0.25" />
         <entry key="..\:/Users/JJC/AndroidStudioProjects/SW_Project/app/src/main/res/layout/fragment_login.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/JJC/AndroidStudioProjects/SW_Project/app/src/main/res/layout/fragment_message_chat_list.xml" value="0.259375" />
         <entry key="..\:/Users/JJC/AndroidStudioProjects/SW_Project/app/src/main/res/layout/fragment_message_main.xml" value="0.259375" />
         <entry key="..\:/Users/JJC/AndroidStudioProjects/SW_Project/app/src/main/res/layout/fragment_message_send.xml" value="0.20104166666666667" />
         <entry key="..\:/Users/JJC/AndroidStudioProjects/SW_Project/app/src/main/res/layout/fragment_message_viewer.xml" value="0.20104166666666667" />
-        <entry key="..\:/Users/JJC/AndroidStudioProjects/SW_Project/app/src/main/res/layout/fragment_my_essay_page.xml" value="0.22" />
+        <entry key="..\:/Users/JJC/AndroidStudioProjects/SW_Project/app/src/main/res/layout/fragment_my_essay_page.xml" value="0.25" />
         <entry key="..\:/Users/JJC/AndroidStudioProjects/SW_Project/app/src/main/res/layout/fragment_mypage.xml" value="0.2677083333333333" />
         <entry key="..\:/Users/JJC/AndroidStudioProjects/SW_Project/app/src/main/res/layout/fragment_profile.xml" value="0.2677083333333333" />
         <entry key="..\:/Users/JJC/AndroidStudioProjects/SW_Project/app/src/main/res/layout/fragment_today_topic.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/JJC/AndroidStudioProjects/SW_Project/app/src/main/res/layout/fragment_welcome.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/JJC/AndroidStudioProjects/SW_Project/app/src/main/res/layout/fragment_write_essay.xml" value="0.2677083333333333" />
+        <entry key="..\:/Users/JJC/AndroidStudioProjects/SW_Project/app/src/main/res/layout/header_layout.xml" value="0.2015625" />
+        <entry key="..\:/Users/JJC/AndroidStudioProjects/SW_Project/app/src/main/res/menu/drawer_nav_menu_welcome.xml" value="0.20625" />
         <entry key="..\:/Users/arp11/AndroidStudioProjects/swengineering/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.29907407407407405" />
         <entry key="..\:/Users/arp11/AndroidStudioProjects/swengineering/app/src/main/res/drawable/hamburger.xml" value="0.29907407407407405" />
         <entry key="..\:/Users/arp11/AndroidStudioProjects/swengineering/app/src/main/res/drawable/ic_launcher_background.xml" value="0.29907407407407405" />

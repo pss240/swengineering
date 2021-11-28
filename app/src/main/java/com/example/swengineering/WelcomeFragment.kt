@@ -45,7 +45,7 @@ class WelcomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedListe
         }
 
         button_yourtopic.setOnClickListener {
-            navController.navigate(R.id.action_welcomeFragment_to_freeboard)
+            navController.navigate(R.id.action_welcomeFragment_to_myEssayPage)
         }
     }
     companion object {
@@ -64,10 +64,6 @@ class WelcomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedListe
                 layout_drawer_welcome.closeDrawers()
                 navController.navigate(R.id.action_welcomeFragment_to_myEssayPage)
             }
-            R.id.button_welcome_Anthology -> {
-                navController.navigate(R.id.action_welcomeFragment_to_anthologyFragment)
-                layout_drawer_welcome.closeDrawers()
-            }
             R.id.button_welcome_Subscribe -> {
                 navController.navigate(R.id.action_welcomeFragment_to_subscribeFragment)
                 layout_drawer_welcome.closeDrawers()
@@ -76,17 +72,11 @@ class WelcomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedListe
                 navController.navigate(R.id.action_welcomeFragment_to_message_main)
                 layout_drawer_welcome.closeDrawers()
             }
-            R.id.button_welcome_MyPage -> {
-                navController.navigate(R.id.action_welcomeFragment_to_mypage)
-                layout_drawer_welcome.closeDrawers()
-            }
+
             R.id.button_welcome_Settings -> {
                 layout_drawer_welcome.closeDrawers()
             }
             R.id.button_welcome_Notice -> {
-                layout_drawer_welcome.closeDrawers()
-            }
-            R.id.button_welcome_test -> {
                 layout_drawer_welcome.closeDrawers()
             }
         }

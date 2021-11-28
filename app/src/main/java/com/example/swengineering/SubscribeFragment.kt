@@ -71,10 +71,6 @@ class SubscribeFragment : Fragment(), NavigationView.OnNavigationItemSelectedLis
                 navController.navigate(R.id.action_subscribeFragment_to_myEssayPage)
                 layout_drawer_welcome.closeDrawers()
             }
-            R.id.button_welcome_Anthology -> {
-                navController.navigate(R.id.action_subscribeFragment_to_anthologyFragment)
-                layout_drawer_welcome.closeDrawers()
-            }
             R.id.button_welcome_Subscribe -> {
                 navController.navigate(R.id.action_subscribeFragment_self)
                 layout_drawer_welcome.closeDrawers()
@@ -83,17 +79,11 @@ class SubscribeFragment : Fragment(), NavigationView.OnNavigationItemSelectedLis
                 navController.navigate(R.id.action_subscribeFragment_to_message_main)
                 layout_drawer_welcome.closeDrawers()
             }
-            R.id.button_welcome_MyPage -> {
-                navController.navigate(R.id.action_subscribeFragment_to_mypage)
-                layout_drawer_welcome.closeDrawers()
-            }
+
             R.id.button_welcome_Settings -> {
                 layout_drawer_welcome.closeDrawers()
             }
             R.id.button_welcome_Notice -> {
-                layout_drawer_welcome.closeDrawers()
-            }
-            R.id.button_welcome_test -> {
                 layout_drawer_welcome.closeDrawers()
             }
         }

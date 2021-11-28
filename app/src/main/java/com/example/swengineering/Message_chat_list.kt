@@ -83,10 +83,6 @@ class Message_chat_list : Fragment(), NavigationView.OnNavigationItemSelectedLis
                 navController.navigate(R.id.action_message_chat_list_to_myEssayPage)
                 layout_drawer_welcome.closeDrawers()
             }
-            R.id.button_welcome_Anthology -> {
-                navController.navigate(R.id.action_message_chat_list_to_anthologyFragment)
-                layout_drawer_welcome.closeDrawers()
-            }
             R.id.button_welcome_Subscribe -> {
                 navController.navigate(R.id.action_message_chat_list_to_subscribeFragment)
                 layout_drawer_welcome.closeDrawers()
@@ -95,17 +91,11 @@ class Message_chat_list : Fragment(), NavigationView.OnNavigationItemSelectedLis
                 navController.navigate(R.id.action_message_chat_list_to_message_main)
                 layout_drawer_welcome.closeDrawers()
             }
-            R.id.button_welcome_MyPage -> {
-                navController.navigate(R.id.action_message_chat_list_to_mypage)
-                layout_drawer_welcome.closeDrawers()
-            }
+
             R.id.button_welcome_Settings -> {
                 layout_drawer_welcome.closeDrawers()
             }
             R.id.button_welcome_Notice -> {
-                layout_drawer_welcome.closeDrawers()
-            }
-            R.id.button_welcome_test -> {
                 layout_drawer_welcome.closeDrawers()
             }
         }

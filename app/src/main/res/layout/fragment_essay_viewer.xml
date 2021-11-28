@@ -136,6 +136,27 @@
             app:layout_constraintHorizontal_bias="0.345"
             app:layout_constraintStart_toEndOf="@+id/editText_essay_viewer_write_comment"
             app:layout_constraintTop_toBottomOf="@+id/recycleView_essay_viewer_comment" />
+
+        <Button
+            android:id="@+id/button_essay_delete"
+            android:layout_width="65dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:text="삭제"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button_essay_update"
+            android:layout_width="65dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="96dp"
+            android:text="수정"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.navigation.NavigationView

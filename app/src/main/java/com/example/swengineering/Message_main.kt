@@ -11,7 +11,6 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.navigation.NavigationView
-import kotlinx.android.synthetic.main.fragment_freeboard.*
 import kotlinx.android.synthetic.main.fragment_message_main.*
 import kotlinx.android.synthetic.main.fragment_message_main.button_welcome_drawmenu
 import kotlinx.android.synthetic.main.fragment_message_main.layout_drawer_welcome
@@ -95,10 +94,6 @@ class Message_main : Fragment(), NavigationView.OnNavigationItemSelectedListener
                 navController.navigate(R.id.action_message_main_to_myEssayPage)
                 layout_drawer_welcome.closeDrawers()
             }
-            R.id.button_welcome_Anthology -> {
-                navController.navigate(R.id.action_message_main_to_anthologyFragment)
-                layout_drawer_welcome.closeDrawers()
-            }
             R.id.button_welcome_Subscribe -> {
                 navController.navigate(R.id.action_message_main_to_subscribeFragment)
                 layout_drawer_welcome.closeDrawers()
@@ -107,17 +102,11 @@ class Message_main : Fragment(), NavigationView.OnNavigationItemSelectedListener
                 navController.navigate(R.id.action_message_main_self)
                 layout_drawer_welcome.closeDrawers()
             }
-            R.id.button_welcome_MyPage -> {
-                navController.navigate(R.id.action_message_main_to_mypage)
-                layout_drawer_welcome.closeDrawers()
-            }
+
             R.id.button_welcome_Settings -> {
                 layout_drawer_welcome.closeDrawers()
             }
             R.id.button_welcome_Notice -> {
-                layout_drawer_welcome.closeDrawers()
-            }
-            R.id.button_welcome_test -> {
                 layout_drawer_welcome.closeDrawers()
             }
         }

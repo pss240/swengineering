@@ -19,10 +19,7 @@ import com.google.android.material.navigation.NavigationView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
-import kotlinx.android.synthetic.main.fragment_anthology.*
-import kotlinx.android.synthetic.main.fragment_subscribe.*
 import kotlinx.android.synthetic.main.fragment_today_topic.*
-import kotlinx.android.synthetic.main.fragment_welcome.*
 import kotlinx.android.synthetic.main.fragment_welcome.button_welcome_drawmenu
 import kotlinx.android.synthetic.main.fragment_welcome.layout_drawer_welcome
 import kotlinx.android.synthetic.main.fragment_welcome.naviview_Welcome
@@ -63,22 +60,26 @@ class TodayTopicFragment : Fragment(), NavigationView.OnNavigationItemSelectedLi
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         navController = Navigation.findNavController(view)
         button_welcome_drawmenu.setOnClickListener{layout_drawer_welcome.openDrawer(GravityCompat.START)}
         naviview_Welcome.setNavigationItemSelectedListener(this)
+
         textView_TodayTopic_Day.setText("$now")
         textView_TodayTopic.setText(topic[now.dayOfMonth%3]) // 토픽
         items = arrayListOf()
 
-
-        imageButton_PlusDay.setOnClickListener {
-            now = now.plusDays(1)
-            textView_TodayTopic_Day.setText("$now")
-        }
-        imageButton_MinusDay.setOnClickListener {
-            now = now.minusDays(1)
-            textView_TodayTopic_Day.setText("$now")
-        }
+//
+//        imageButton_PlusDay.setOnClickListener {
+//            now = now.plusDays(1)
+//            textView_TodayTopic_Day.setText("$now")
+//            textView_TodayTopic.setText(topic[now.dayOfMonth%3])
+//        }
+//        imageButton_MinusDay.setOnClickListener {
+//            now = now.minusDays(1)
+//            textView_TodayTopic_Day.setText("$now")
+//            textView_TodayTopic.setText(topic[now.dayOfMonth%3])
+//        }
 
         getdata()
 
@@ -87,6 +88,7 @@ class TodayTopicFragment : Fragment(), NavigationView.OnNavigationItemSelectedLi
         recyclerView_TodayTopic.adapter = RCAdapter//리스트에서 에세이뷰어플래그먼트 열기위해서 view인자추가
 
         button_toWrite.setOnClickListener {
+            essayKey = ""
             navController.navigate(R.id.action_todayTopicFragment_to_writeEssay)
         }
 
@@ -96,9 +98,10 @@ class TodayTopicFragment : Fragment(), NavigationView.OnNavigationItemSelectedLi
     fun getdata(){
         FBRef.essaysRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
+                items.clear()
                 for(dataModel in dataSnapshot.children){
                     val item = dataModel.getValue(EssayModel::class.java)
-                    items.add(Data_TodayTopic(item!!.title,item!!.nickname,item!!.thumb,dataModel.key))
+                    items.add(0,Data_TodayTopic(item!!.title,item!!.nickname,item!!.thumb,dataModel.key))
                 }
 
                 RCAdapter.notifyDataSetChanged()
@@ -117,10 +120,6 @@ class TodayTopicFragment : Fragment(), NavigationView.OnNavigationItemSelectedLi
                 navController.navigate(R.id.action_todayTopicFragment_to_myEssayPage)
                 layout_drawer_welcome.closeDrawers()
             }
-            R.id.button_welcome_Anthology -> {
-                navController.navigate(R.id.action_todayTopicFragment_to_anthologyFragment)
-                layout_drawer_welcome.closeDrawers()
-            }
             R.id.button_welcome_Subscribe -> {
                 navController.navigate(R.id.action_todayTopicFragment_to_subscribeFragment)
                 layout_drawer_welcome.closeDrawers()
@@ -129,17 +128,11 @@ class TodayTopicFragment : Fragment(), NavigationView.OnNavigationItemSelectedLi
                 navController.navigate(R.id.action_todayTopicFragment_to_message_main)
                 layout_drawer_welcome.closeDrawers()
             }
-            R.id.button_welcome_MyPage -> {
-                navController.navigate(R.id.action_todayTopicFragment_to_mypage)
-                layout_drawer_welcome.closeDrawers()
-            }
+
             R.id.button_welcome_Settings -> {
                 layout_drawer_welcome.closeDrawers()
             }
             R.id.button_welcome_Notice -> {
-                layout_drawer_welcome.closeDrawers()
-            }
-            R.id.button_welcome_test -> {
                 layout_drawer_welcome.closeDrawers()
             }
         }

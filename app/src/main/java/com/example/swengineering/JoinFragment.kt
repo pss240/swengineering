@@ -9,6 +9,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import com.example.swengineering.FB.FBAuth
 import com.example.swengineering.FB.FBRef
 import com.example.swengineering.model.UserModel
@@ -22,7 +25,7 @@ class JoinFragment : Fragment() {
     private var param2: String? = null
 
     lateinit var mainActivity: MainActivity
-
+    lateinit var navController: NavController
     override fun onAttach(context: Context) {
         super.onAttach(context)
         mainActivity = context as MainActivity
@@ -45,7 +48,7 @@ class JoinFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        navController = Navigation.findNavController(view)
         button_Join_Join.setOnClickListener {
             val email = input_Join_Email.text.toString()
             val password = input_Join_Password.text.toString()
@@ -60,6 +63,7 @@ class JoinFragment : Fragment() {
                         if (task.isSuccessful) {
 
                             FBRef.UsersRef.push().setValue(UserModel(FBAuth.getUid(),nickname))
+                            navController.navigate(R.id.action_joinFragment_to_loginFragment)
 
                             Toast.makeText(it.context,"회원가입 성공", Toast.LENGTH_SHORT).show()
 

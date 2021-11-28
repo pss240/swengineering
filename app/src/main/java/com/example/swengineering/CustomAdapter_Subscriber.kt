@@ -33,7 +33,7 @@ class CustomAdapter_Subscriber (val DataList:ArrayList<Data_Subscriber>,val cont
 
         holder.itemView.setOnClickListener{
             var navController : NavController = Navigation.findNavController(view)//반드시 함수 안에서 네비 선언해줘야하나? 이거 계속 선언해줄텐데
-            navController.navigate(R.id.action_subscriberFragment_to_profileFragment)
+            //navController.navigate(R.id.action_subscriberFragment_to_profileFragment)
         }
     }
 
