@@ -44,6 +44,7 @@ class Essay_viewer : Fragment(), NavigationView.OnNavigationItemSelectedListener
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    var chk = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -83,35 +84,60 @@ class Essay_viewer : Fragment(), NavigationView.OnNavigationItemSelectedListener
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
                 if(dataSnapshot.child(essayKey).hasChildren()) {
+                    item2 = dataSnapshot.child(essayKey).getValue(EssayModel::class.java)!!
+                    Log.d("item2 after", item2.toString())
 
-                        item2 = dataSnapshot.child(essayKey).getValue(EssayModel::class.java)!!
-                        Log.d("item2 after", item2.toString())
-
-                        var tv1 = v.findViewById<TextView>(R.id.textView_essay_viewer_topic)
-                        var tv2 = v.findViewById<TextView>(R.id.textView_essay_viewer_writer)
-                        var tv3 = v.findViewById<TextView>(R.id.textView_essay_viewer_text)
-                        var tv4 = v.findViewById<TextView>(R.id.textview_thumb)
-                        tv1.setText(item2.title)
-                        tv2.setText(item2.nickname)
-                        tv3.setText(item2.body)
-                        tv4.setText(item2.thumb)
-                    }
+                    var tv1 = v.findViewById<TextView>(R.id.textView_essay_viewer_topic)
+                    var tv2 = v.findViewById<TextView>(R.id.textView_essay_viewer_writer)
+                    var tv3 = v.findViewById<TextView>(R.id.textView_essay_viewer_text)
+                    var tv4 = v.findViewById<TextView>(R.id.textview_thumb)
+                    tv1.setText(item2.title)
+                    tv2.setText(item2.nickname)
+                    tv3.setText(item2.body)
+                    tv4.setText(item2.thumb)
+                }
+                else
+                    chk = 1
             }
+
 
             override fun onCancelled(error: DatabaseError) {
                 // Failed to read value
                 Log.w("WelcomeFragment", "Failed to read value.", error.toException())
             }
         })
+
+        if(chk == 1)
+            navController.popBackStack()
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         comment_items= arrayListOf()
-
+        navController = Navigation.findNavController(view)
+        button_welcome_drawmenu.setOnClickListener{layout_drawer_welcome.openDrawer(GravityCompat.START)}
+        naviview_Welcome.setNavigationItemSelectedListener(this)
 
 
         getdata(view)
+
+        textView_essay_viewer_writer.setOnClickListener {
+            FBRef.essaysRef.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    val item = dataSnapshot.child(essayKey).getValue(EssayModel::class.java)
+                    if(item != null){
+                        Uid = item!!.uid
+                    }
+//                    RCAdapter.notifyDataSetChanged()
+                }
+                override fun onCancelled(error: DatabaseError) {
+                    // Failed to read value
+                    Log.w("WelcomeFragment", "Failed to read value.", error.toException())
+                }
+            })
+            navController.navigate(R.id.action_essay_viewer_to_myEssayPage)
+        }
 
         button_essay_update.setOnClickListener {
             if(FBAuth.getUid() == item2.uid) {
@@ -119,7 +145,6 @@ class Essay_viewer : Fragment(), NavigationView.OnNavigationItemSelectedListener
             }
             else
                 Toast.makeText(it.context, "권한이 없습니다", Toast.LENGTH_SHORT).show()
-
         }
 
         button_essay_delete.setOnClickListener {
@@ -156,9 +181,6 @@ class Essay_viewer : Fragment(), NavigationView.OnNavigationItemSelectedListener
                     CommentModel(nickname,editText_essay_viewer_write_comment.text.toString(),"0")
                 )
         }
-        navController = Navigation.findNavController(view)
-        button_welcome_drawmenu.setOnClickListener{layout_drawer_welcome.openDrawer(GravityCompat.START)}
-        naviview_Welcome.setNavigationItemSelectedListener(this)
 
         comment_getdata()
 

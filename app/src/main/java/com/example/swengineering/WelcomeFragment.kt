@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import com.example.swengineering.FB.FBAuth
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.fragment_welcome.*
 
@@ -45,6 +46,7 @@ class WelcomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedListe
         }
 
         button_yourtopic.setOnClickListener {
+            Uid = FBAuth.getUid()
             navController.navigate(R.id.action_welcomeFragment_to_myEssayPage)
         }
     }

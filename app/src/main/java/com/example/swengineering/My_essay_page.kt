@@ -1,6 +1,7 @@
 package com.example.swengineering
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MenuItem
@@ -10,11 +11,21 @@ import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.swengineering.FB.FBAuth
+import com.example.swengineering.FB.FBRef
+import com.example.swengineering.model.EssayModel
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.fragment_my_essay_page.*
 
 
 class MyEssayPage : Fragment(), NavigationView.OnNavigationItemSelectedListener {
+
+    lateinit var items : ArrayList<Data_My_essay_page>
+    lateinit var RCAdapter : CustomAdapter_My_essay_page
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,32 +45,65 @@ class MyEssayPage : Fragment(), NavigationView.OnNavigationItemSelectedListener 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var item = arrayListOf(
-            Data_My_essay_page("Title1","User1","10"),
-            Data_My_essay_page("Title2","User2","10"),
-            Data_My_essay_page("Title3","User3","10"),
-            Data_My_essay_page("Title4","User4","10"),
-            Data_My_essay_page("Title5","User5","10"),
-            Data_My_essay_page("Title6","User6","10"),
-            Data_My_essay_page("Title7","User7","10"),
-            Data_My_essay_page("Title8","User8","10"),
-            Data_My_essay_page("Title9","User9","10"),
-            Data_My_essay_page("Title10","User10","10"),
-            Data_My_essay_page("Title11","User11","10"),
-            Data_My_essay_page("Title12","User12","10"),
-            Data_My_essay_page("Title13","User13","10"),
-            Data_My_essay_page("Title14","User14","10")
-        )
+        items = arrayListOf()
+
+
+
+//        var item = arrayListOf(
+//            Data_My_essay_page("Title1","User1","10"),
+//            Data_My_essay_page("Title2","User2","10"),
+//            Data_My_essay_page("Title3","User3","10"),
+//            Data_My_essay_page("Title4","User4","10"),
+//            Data_My_essay_page("Title5","User5","10"),
+//            Data_My_essay_page("Title6","User6","10"),
+//            Data_My_essay_page("Title7","User7","10"),
+//            Data_My_essay_page("Title8","User8","10"),
+//            Data_My_essay_page("Title9","User9","10"),
+//            Data_My_essay_page("Title10","User10","10"),
+//            Data_My_essay_page("Title11","User11","10"),
+//            Data_My_essay_page("Title12","User12","10"),
+//            Data_My_essay_page("Title13","User13","10"),
+//            Data_My_essay_page("Title14","User14","10")
+//        )
 
 
         navController = Navigation.findNavController(view)
         button_welcome_drawmenu.setOnClickListener{layout_drawer_welcome.openDrawer(GravityCompat.START)}
         naviview_Welcome.setNavigationItemSelectedListener(this)
 
+        getData()
+
+        RCAdapter = CustomAdapter_My_essay_page(items,requireContext(), view)
+
+
         recyclerview_my_essay_todays_topic.layoutManager = LinearLayoutManager(requireContext())
-        recyclerview_my_essay_todays_topic.adapter = CustomAdapter_My_essay_page(item,requireContext(), view)
+        recyclerview_my_essay_todays_topic.adapter = RCAdapter
 
 
+    }
+
+    fun getData(){
+        FBRef.essaysRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                items.clear()
+                for(dataModel in dataSnapshot.children){
+                    val item = dataModel.getValue(EssayModel::class.java)
+                    Log.d("UID", Uid)
+                    Log.d("item's UID", item!!.uid)
+                    if(item!!.uid.equals(Uid)){
+                        items.add(0,Data_My_essay_page(item!!.title, item!!.nickname, item!!.thumb, dataModel.key))
+
+                    }
+                }
+
+                RCAdapter.notifyDataSetChanged()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Failed to read value
+                Log.w("WelcomeFragment", "Failed to read value.", error.toException())
+            }
+        })
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {

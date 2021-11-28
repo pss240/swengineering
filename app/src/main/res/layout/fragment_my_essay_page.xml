@@ -7,7 +7,7 @@
     android:id = "@+id/layout_drawer_welcome"
     tools:context=".MyEssayPage">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    b<androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

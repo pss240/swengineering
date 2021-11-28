@@ -9,6 +9,7 @@ import com.google.firebase.ktx.Firebase
 lateinit var auth: FirebaseAuth
 lateinit var nickname : String
 lateinit var essayKey : String
+lateinit var Uid : String
 var topic= arrayOf<String>(
     "Topic 1","Topic 2", "Topic 3"
 )

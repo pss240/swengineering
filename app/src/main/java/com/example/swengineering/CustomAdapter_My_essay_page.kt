@@ -10,7 +10,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.custom_list_anthology.view.*
 
-class Data_My_essay_page(val Title:String, val name:String,val thumb:String)
+class Data_My_essay_page(val Title:String, val name:String,val thumb:String, val essayKey: String?)
 
 class CustomViewHolder_My_essay_page(v : View) : RecyclerView.ViewHolder(v) {
     val Title = v.textView_Anthology_TopicName
@@ -32,6 +32,7 @@ class CustomAdapter_My_essay_page(val DataList:ArrayList<Data_My_essay_page>, va
         holder.name.text = curData.name
         holder.thumb.text = curData.thumb
         holder.itemView.setOnClickListener{
+            essayKey = curData.essayKey!!
             var navController : NavController = Navigation.findNavController(view)//반드시 함수 안에서 네비 선언해줘야하나? 이거 계속 선언해줄텐데
             navController.navigate(R.id.action_myEssayPage_to_essay_viewer)
         }
