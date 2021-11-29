@@ -7,6 +7,9 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
 import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -14,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.swengineering.FB.FBAuth
 import com.example.swengineering.FB.FBRef
 import com.example.swengineering.model.EssayModel
+import com.example.swengineering.model.UserModel
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -25,7 +29,8 @@ class MyEssayPage : Fragment(), NavigationView.OnNavigationItemSelectedListener 
 
     lateinit var items : ArrayList<Data_My_essay_page>
     lateinit var RCAdapter : CustomAdapter_My_essay_page
-
+    var Ecnt = 0
+    var Tcnt = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +51,8 @@ class MyEssayPage : Fragment(), NavigationView.OnNavigationItemSelectedListener 
         super.onViewCreated(view, savedInstanceState)
 
         items = arrayListOf()
+
+
 
 
 
@@ -71,7 +78,7 @@ class MyEssayPage : Fragment(), NavigationView.OnNavigationItemSelectedListener 
         button_welcome_drawmenu.setOnClickListener{layout_drawer_welcome.openDrawer(GravityCompat.START)}
         naviview_Welcome.setNavigationItemSelectedListener(this)
 
-        getData()
+        getData(view)
 
         RCAdapter = CustomAdapter_My_essay_page(items,requireContext(), view)
 
@@ -79,10 +86,63 @@ class MyEssayPage : Fragment(), NavigationView.OnNavigationItemSelectedListener 
         recyclerview_my_essay_todays_topic.layoutManager = LinearLayoutManager(requireContext())
         recyclerview_my_essay_todays_topic.adapter = RCAdapter
 
+        button_mypage_editName.setOnClickListener {
+
+
+            if(Uid == FBAuth.getUid()){
+                FBRef.UsersRef.child(Uid).setValue(
+                    UserModel(
+                        textView_mypage_user_id.text.toString(),
+                        textView_mypage_user_name.text.toString(),
+                        Uid
+                    )
+                )
+                Toast.makeText(it.context,"정상적으로 변경되었습니다", Toast.LENGTH_SHORT).show()
+
+            }
+            else
+                Toast.makeText(it.context,"권한이 없습니다", Toast.LENGTH_SHORT).show()
+
+
+        }
+
 
     }
 
-    fun getData(){
+    fun getInfo(v : View){
+        FBRef.UsersRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for(dataModel in dataSnapshot.children) {
+                    val item = dataModel.getValue(UserModel::class.java)
+
+                    if (item!!.uid.equals(Uid)) {
+
+                        var tv1 = v.findViewById<EditText>(R.id.textView_mypage_user_name)
+                        var tv2 = v.findViewById<TextView>(R.id.textView_mypage_user_id)
+
+                        tv1.setText(item!!.nickname)
+                        tv2.setText(item!!.email)
+                        break
+                    }
+                }
+                var tv3 = v.findViewById<TextView>(R.id.textView_mypage_user_essay_count_value)
+                var tv4 = v.findViewById<TextView>(R.id.textView_mypage_user_like_count_value)
+
+                tv3.setText(Ecnt.toString())
+                tv4.setText(Tcnt.toString())
+
+                RCAdapter.notifyDataSetChanged()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Failed to read value
+                Log.w("WelcomeFragment", "Failed to read value.", error.toException())
+            }
+        })
+
+    }
+
+    fun getData(v:View){
         FBRef.essaysRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 items.clear()
@@ -91,10 +151,14 @@ class MyEssayPage : Fragment(), NavigationView.OnNavigationItemSelectedListener 
                     Log.d("UID", Uid)
                     Log.d("item's UID", item!!.uid)
                     if(item!!.uid.equals(Uid)){
+                        Ecnt++
+                        Tcnt += item!!.thumb.toInt()
                         items.add(0,Data_My_essay_page(item!!.title, item!!.nickname, item!!.thumb, dataModel.key))
 
                     }
                 }
+
+                getInfo(v)
 
                 RCAdapter.notifyDataSetChanged()
             }

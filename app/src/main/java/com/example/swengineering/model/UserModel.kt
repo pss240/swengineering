@@ -4,7 +4,7 @@ import android.provider.ContactsContract
 
 data class UserModel (
 
-    var uid : String = "",
-    var nickname: String = ""
-
+    var email : String = "",
+    var nickname: String = "",
+    var uid : String = ""
 )

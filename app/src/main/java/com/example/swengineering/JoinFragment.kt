@@ -62,7 +62,7 @@ class JoinFragment : Fragment() {
                     .addOnCompleteListener(mainActivity) { task ->
                         if (task.isSuccessful) {
 
-                            FBRef.UsersRef.push().setValue(UserModel(FBAuth.getUid(),nickname))
+                            FBRef.UsersRef.child(FBAuth.getUid()).setValue(UserModel(email,nickname,FBAuth.getUid()))
                             navController.navigate(R.id.action_joinFragment_to_loginFragment)
 
                             Toast.makeText(it.context,"회원가입 성공", Toast.LENGTH_SHORT).show()

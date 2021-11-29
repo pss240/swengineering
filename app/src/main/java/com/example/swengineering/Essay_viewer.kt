@@ -54,18 +54,6 @@ class Essay_viewer : Fragment(), NavigationView.OnNavigationItemSelectedListener
         }
     }
 
-    override fun onStop() {
-        super.onStop()
-        Log.d("Stop", "1")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.d("Destroy", "1")
-
-    }
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

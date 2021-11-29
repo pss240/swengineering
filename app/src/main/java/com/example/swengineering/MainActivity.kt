@@ -11,7 +11,7 @@ lateinit var nickname : String
 lateinit var essayKey : String
 lateinit var Uid : String
 var topic= arrayOf<String>(
-    "Topic 1","Topic 2", "Topic 3"
+    "오늘 하루 기억에 남는 일이 있나요?","오늘은 어떤 음식을 드셨나요?", "하고 싶은 일이 있으신가요?"
 )
 
 class MainActivity : AppCompatActivity() {
