@@ -13,6 +13,7 @@ import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.swengineering.FB.FBAuth
 import com.example.swengineering.FB.FBRef
 import com.example.swengineering.model.EssayModel
 import com.google.android.material.navigation.NavigationView
@@ -24,7 +25,6 @@ import kotlinx.android.synthetic.main.fragment_welcome.button_welcome_drawmenu
 import kotlinx.android.synthetic.main.fragment_welcome.layout_drawer_welcome
 import kotlinx.android.synthetic.main.fragment_welcome.naviview_Welcome
 import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 
 
 private const val ARG_PARAM1 = "param1"
@@ -69,18 +69,6 @@ class TodayTopicFragment : Fragment(), NavigationView.OnNavigationItemSelectedLi
         textView_TodayTopic.setText(topic[now.dayOfMonth%3]) // 토픽
         items = arrayListOf()
 
-//
-//        imageButton_PlusDay.setOnClickListener {
-//            now = now.plusDays(1)
-//            textView_TodayTopic_Day.setText("$now")
-//            textView_TodayTopic.setText(topic[now.dayOfMonth%3])
-//        }
-//        imageButton_MinusDay.setOnClickListener {
-//            now = now.minusDays(1)
-//            textView_TodayTopic_Day.setText("$now")
-//            textView_TodayTopic.setText(topic[now.dayOfMonth%3])
-//        }
-
         getdata()
 
         RCAdapter = CustomAdapter_TodayTopic(items,requireContext(),view)
@@ -117,11 +105,12 @@ class TodayTopicFragment : Fragment(), NavigationView.OnNavigationItemSelectedLi
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             R.id.button_welcome_MyEssay -> {
+                Uid = FBAuth.getUid()
                 navController.navigate(R.id.action_todayTopicFragment_to_myEssayPage)
                 layout_drawer_welcome.closeDrawers()
             }
-            R.id.button_welcome_Subscribe -> {
-                navController.navigate(R.id.action_todayTopicFragment_to_subscribeFragment)
+            R.id.button_welcome_Subscriber -> {
+                navController.navigate(R.id.action_todayTopicFragment_to_subscriberFragment)
                 layout_drawer_welcome.closeDrawers()
             }
             R.id.button_welcome_Message -> {
@@ -129,11 +118,12 @@ class TodayTopicFragment : Fragment(), NavigationView.OnNavigationItemSelectedLi
                 layout_drawer_welcome.closeDrawers()
             }
 
-            R.id.button_welcome_Settings -> {
-                layout_drawer_welcome.closeDrawers()
+            R.id.button_welcome_to_main -> {
+                navController.navigate(R.id.welcomeFragment)
             }
-            R.id.button_welcome_Notice -> {
-                layout_drawer_welcome.closeDrawers()
+            R.id.button_Logout -> {
+                auth.signOut()
+                navController.popBackStack(R.id.loginFragment,true,false)
             }
         }
         return true

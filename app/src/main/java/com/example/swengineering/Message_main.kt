@@ -61,9 +61,6 @@ class Message_main : Fragment(), NavigationView.OnNavigationItemSelectedListener
 
         RCAdapter = CustomAdapter_Message_Main_Log(item_log,requireContext(), view)
 
-//        var item_log = arrayListOf(
-//        )
-
         getData(view)
 
         navController = Navigation.findNavController(view)
@@ -85,10 +82,6 @@ class Message_main : Fragment(), NavigationView.OnNavigationItemSelectedListener
 
                         for (dataModel2 in dataModel.children) {
                             val item = dataModel2.key
-                            Log.e("key", item!!)
-                            Log.e("key", dataModel2.value.toString())
-
-
                             FBRef.UsersRef.addValueEventListener(object : ValueEventListener {
 
                                 override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -133,11 +126,12 @@ class Message_main : Fragment(), NavigationView.OnNavigationItemSelectedListener
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             R.id.button_welcome_MyEssay -> {
+                Uid = FBAuth.getUid()
                 navController.navigate(R.id.action_message_main_to_myEssayPage)
                 layout_drawer_welcome.closeDrawers()
             }
-            R.id.button_welcome_Subscribe -> {
-                navController.navigate(R.id.action_message_main_to_subscribeFragment)
+            R.id.button_welcome_Subscriber -> {
+                navController.navigate(R.id.action_message_main_to_subscriberFragment)
                 layout_drawer_welcome.closeDrawers()
             }
             R.id.button_welcome_Message -> {
@@ -145,11 +139,12 @@ class Message_main : Fragment(), NavigationView.OnNavigationItemSelectedListener
                 layout_drawer_welcome.closeDrawers()
             }
 
-            R.id.button_welcome_Settings -> {
-                layout_drawer_welcome.closeDrawers()
+            R.id.button_welcome_to_main -> {
+                navController.navigate(R.id.welcomeFragment)
             }
-            R.id.button_welcome_Notice -> {
-                layout_drawer_welcome.closeDrawers()
+            R.id.button_Logout -> {
+                auth.signOut()
+                navController.popBackStack(R.id.loginFragment,true,false)
             }
         }
         return true

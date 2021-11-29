@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.swengineering.FB.FBAuth
 import com.example.swengineering.FB.FBRef
@@ -20,11 +19,9 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.fragment_message_chat_list.*
-import kotlinx.android.synthetic.main.fragment_welcome.*
 import kotlinx.android.synthetic.main.fragment_welcome.button_welcome_drawmenu
 import kotlinx.android.synthetic.main.fragment_welcome.layout_drawer_welcome
 import kotlinx.android.synthetic.main.fragment_welcome.naviview_Welcome
-import kotlin.math.log
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -75,12 +72,17 @@ class Message_chat_list : Fragment(), NavigationView.OnNavigationItemSelectedLis
                 for(dataModel in dataSnapshot.children){
                     if(Uid.equals(dataModel.value)){
                         logKey = dataModel.key.toString()
-                        Log.d("로그키!!",logKey)
+                        Log.d("log key first",logKey)
+                        getdata(logKey)
                         return
                     }
                 }
+
                 push()
+
             }
+
+
 
             override fun onCancelled(error: DatabaseError) {
                 Log.w("WelcomeFragment", "Failed to read value.", error.toException())
@@ -88,13 +90,13 @@ class Message_chat_list : Fragment(), NavigationView.OnNavigationItemSelectedLis
         })
 
 
+
         button_send.setOnClickListener {
 
             FBRef.msgRef.child(logKey).push().setValue(nickname+": "+editText_msg.text)
+            editText_msg.setText("")
 
         }
-
-        getdata()
 
         RCAdapter = CustomAdapter_Message_chat_list(items, requireContext(),view)
         recyclerview_message_chat_list.layoutManager = LinearLayoutManager(requireContext())
@@ -113,14 +115,18 @@ class Message_chat_list : Fragment(), NavigationView.OnNavigationItemSelectedLis
 
     }
 
-    fun getdata(){
-        FBRef.msgRef.child(logKey).addValueEventListener(object : ValueEventListener {
+    fun getdata(key : String) {
+        Log.d("getdata logkey", key)
+
+        FBRef.msgRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 items.clear()
-                for(dataModel in dataSnapshot.children){
-                    for(dataModel2 in dataModel.children){
-                      val content = dataModel2.value
-                      items.add(Data_Message_chat_list(content.toString()))
+                for (dataModel in dataSnapshot.children) {
+                    if(dataModel.key == key){
+                        for (dataModel2 in dataModel.children) {
+                            val content = dataModel2.value
+                            items.add(Data_Message_chat_list(content.toString()))
+                        }
                     }
                 }
 
@@ -131,16 +137,18 @@ class Message_chat_list : Fragment(), NavigationView.OnNavigationItemSelectedLis
                 Log.w("WelcomeFragment", "Failed to read value.", error.toException())
             }
         })
+
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             R.id.button_welcome_MyEssay -> {
+                Uid = FBAuth.getUid()
                 navController.navigate(R.id.action_message_chat_list_to_myEssayPage)
                 layout_drawer_welcome.closeDrawers()
             }
-            R.id.button_welcome_Subscribe -> {
-                navController.navigate(R.id.action_message_chat_list_to_subscribeFragment)
+            R.id.button_welcome_Subscriber -> {
+                navController.navigate(R.id.action_message_chat_list_to_subscriberFragment)
                 layout_drawer_welcome.closeDrawers()
             }
             R.id.button_welcome_Message -> {
@@ -148,11 +156,12 @@ class Message_chat_list : Fragment(), NavigationView.OnNavigationItemSelectedLis
                 layout_drawer_welcome.closeDrawers()
             }
 
-            R.id.button_welcome_Settings -> {
-                layout_drawer_welcome.closeDrawers()
+            R.id.button_welcome_to_main -> {
+                navController.navigate(R.id.welcomeFragment)
             }
-            R.id.button_welcome_Notice -> {
-                layout_drawer_welcome.closeDrawers()
+            R.id.button_Logout -> {
+                auth.signOut()
+                navController.popBackStack(R.id.loginFragment,true,false)
             }
         }
         return true

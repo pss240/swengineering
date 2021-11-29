@@ -1,5 +1,6 @@
 package com.example.swengineering
 
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -7,25 +8,22 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.swengineering.FB.FBAuth
 import com.example.swengineering.FB.FBRef
 import com.example.swengineering.model.EssayModel
-import com.example.swengineering.model.UserModel
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.ktx.Firebase
-import kotlinx.android.synthetic.main.fragment_today_topic.*
-import kotlinx.android.synthetic.main.fragment_welcome.*
 import kotlinx.android.synthetic.main.fragment_welcome.button_welcome_drawmenu
 import kotlinx.android.synthetic.main.fragment_welcome.layout_drawer_welcome
 import kotlinx.android.synthetic.main.fragment_welcome.naviview_Welcome
 import kotlinx.android.synthetic.main.fragment_write_essay.*
+import java.time.LocalDate
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -51,6 +49,7 @@ class WriteEssay : Fragment(), NavigationView.OnNavigationItemSelectedListener {
     }
     //메뉴 네비게이션 코드 시작부
     lateinit var navController : NavController
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
@@ -59,21 +58,21 @@ class WriteEssay : Fragment(), NavigationView.OnNavigationItemSelectedListener {
         var item : EssayModel
         var chk = 0
 
+        var now = LocalDate.now()
+        input_TopicName.setText(topic[now.dayOfMonth%3])
+
         if(essayKey != ""){
 
             FBRef.essaysRef.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     if(chk == 0) {
                         item = dataSnapshot.child(essayKey).getValue(EssayModel::class.java)!!
-                        Log.d("item2 after", item.toString())
 
                         input_TopicName.setText(item.title)
                         input_TopicContents.setText(item.body)
                         thumb = item.thumb
-
                     }
                 }
-
                 override fun onCancelled(error: DatabaseError) {
                     // Failed to read value
                     Log.w("WelcomeFragment", "Failed to read value.", error.toException())
@@ -87,27 +86,24 @@ class WriteEssay : Fragment(), NavigationView.OnNavigationItemSelectedListener {
             var uid = FBAuth.getUid()
             val time = FBAuth.getTime()
             chk = 1
-//            textView_TodayTopic.setText(topic[now.dayOfMonth%3]) // 토픽
-
 
             if(essayKey == "")
                 FBRef.essaysRef.push().setValue(EssayModel(title, body, uid, nickname, time, "0"))
             else
                 FBRef.essaysRef.child(essayKey).setValue(EssayModel(title, body, uid, nickname, time,thumb!!))
-
             navController.popBackStack()
-
         }
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             R.id.button_welcome_MyEssay -> {
+                Uid = FBAuth.getUid()
                 navController.navigate(R.id.action_writeEssay_to_myEssayPage)
                 layout_drawer_welcome.closeDrawers()
             }
-            R.id.button_welcome_Subscribe -> {
-                navController.navigate(R.id.action_writeEssay_to_subscribeFragment)
+            R.id.button_welcome_Subscriber -> {
+                navController.navigate(R.id.action_writeEssay_to_subscriberFragment)
                 layout_drawer_welcome.closeDrawers()
             }
             R.id.button_welcome_Message -> {
@@ -115,11 +111,12 @@ class WriteEssay : Fragment(), NavigationView.OnNavigationItemSelectedListener {
                 layout_drawer_welcome.closeDrawers()
             }
 
-            R.id.button_welcome_Settings -> {
-                layout_drawer_welcome.closeDrawers()
+            R.id.button_welcome_to_main -> {
+                navController.navigate(R.id.welcomeFragment)
             }
-            R.id.button_welcome_Notice -> {
-                layout_drawer_welcome.closeDrawers()
+            R.id.button_Logout -> {
+                auth.signOut()
+                navController.popBackStack(R.id.loginFragment,true,false)
             }
         }
         return true

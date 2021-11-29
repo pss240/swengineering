@@ -8,4 +8,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="inputblank">#FF8C8C8C</color>
+    <color name="appBackgroundColor">#FEF7DC</color>
+    <color name="appTextColor">#000000</color>
+    <color name="appListColor">#E6DDC6</color>
+    <color name="appButtonColor">#A19882</color>
+    <color name="appButtonClickedColor">#C2B8A3</color>
 </resources>

@@ -31,7 +31,6 @@ class CustomAdapter_TodayTopic (val DataList:ArrayList<Data_TodayTopic>,val cont
         holder.thumb.text = curData.thumb
         holder.itemView.setOnClickListener{
             essayKey = curData.essayKey!!
-            Toast.makeText(it.context,essayKey,Toast.LENGTH_SHORT).show()
             var navController : NavController = Navigation.findNavController(view)//반드시 함수 안에서 네비 선언해줘야하나? 이거 계속 선언해줄텐데
             navController.navigate(R.id.action_todayTopicFragment_to_essay_viewer)
         }

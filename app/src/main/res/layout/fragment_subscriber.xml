@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SubscriberFragment">
+    tools:context=".SubscriberFragment"
+    android:background="@color/appBackgroundColor">
 
     <TextView
         android:id="@+id/textView_Subscriber"
@@ -12,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:text="Subscriber"
-        android:textColor="@color/black"
+        android:textStyle="bold"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.121"

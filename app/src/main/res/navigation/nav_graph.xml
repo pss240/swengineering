@@ -12,7 +12,11 @@
         tools:layout="@layout/fragment_join" >
         <action
             android:id="@+id/action_joinFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"  />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -21,7 +25,11 @@
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_loginFragment_to_joinFragment"
-            app:destination="@id/joinFragment" />
+            app:destination="@id/joinFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"  />
         <action
             android:id="@+id/action_loginFragment_to_welcomeFragment"
             app:destination="@id/welcomeFragment" />
@@ -33,16 +41,32 @@
         tools:layout="@layout/fragment_welcome" >
         <action
             android:id="@+id/action_welcomeFragment_to_todayTopicFragment"
-            app:destination="@id/todayTopicFragment" />
-        <action
-            android:id="@+id/action_welcomeFragment_to_subscribeFragment"
-            app:destination="@id/subscribeFragment" />
+            app:destination="@id/todayTopicFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <action
             android:id="@+id/action_welcomeFragment_to_myEssayPage"
-            app:destination="@id/myEssayPage" />
+            app:destination="@id/myEssayPage"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <action
             android:id="@+id/action_welcomeFragment_to_message_main"
-            app:destination="@id/message_main" />
+            app:destination="@id/message_main"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_welcomeFragment_to_subscriberFragment"
+            app:destination="@id/subscriberFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/writeEssay"
@@ -50,36 +74,32 @@
         android:label="WriteEssay" >
         <action
             android:id="@+id/action_writeEssay_to_myEssayPage"
-            app:destination="@id/myEssayPage" />
-        <action
-            android:id="@+id/action_writeEssay_to_subscribeFragment"
-            app:destination="@id/subscribeFragment" />
+            app:destination="@id/myEssayPage"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <action
             android:id="@+id/action_writeEssay_to_message_main"
-            app:destination="@id/message_main" />
+            app:destination="@id/message_main"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <action
             android:id="@+id/action_writeEssay_to_todayTopicFragment"
-            app:destination="@id/todayTopicFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/subscribeFragment"
-        android:name="com.example.swengineering.SubscribeFragment"
-        android:label="SubscribeFragment" >
+            app:destination="@id/todayTopicFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <action
-            android:id="@+id/action_subscribeFragment_to_subscriberFragment"
-            app:destination="@id/subscriberFragment" />
-        <action
-            android:id="@+id/action_subscribeFragment_to_myEssayPage"
-            app:destination="@id/myEssayPage" />
-        <action
-            android:id="@+id/action_subscribeFragment_self"
-            app:destination="@id/subscribeFragment" />
-        <action
-            android:id="@+id/action_subscribeFragment_to_message_main"
-            app:destination="@id/message_main" />
-        <action
-            android:id="@+id/action_subscribeFragment_to_essay_viewer"
-            app:destination="@id/essay_viewer" />
+            android:id="@+id/action_writeEssay_to_subscriberFragment"
+            app:destination="@id/subscriberFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/subscriberFragment"
@@ -87,7 +107,11 @@
         android:label="SubscriberFragment" >
         <action
             android:id="@+id/action_subscriberFragment_to_myEssayPage"
-            app:destination="@id/myEssayPage" />
+            app:destination="@id/myEssayPage"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/todayTopicFragment"
@@ -96,19 +120,39 @@
         tools:layout="@layout/fragment_today_topic" >
         <action
             android:id="@+id/action_todayTopicFragment_to_myEssayPage"
-            app:destination="@id/myEssayPage" />
-        <action
-            android:id="@+id/action_todayTopicFragment_to_subscribeFragment"
-            app:destination="@id/subscribeFragment" />
+            app:destination="@id/myEssayPage"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
         <action
             android:id="@+id/action_todayTopicFragment_to_message_main"
-            app:destination="@id/message_main" />
+            app:destination="@id/message_main"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <action
             android:id="@+id/action_todayTopicFragment_to_essay_viewer"
-            app:destination="@id/essay_viewer" />
+            app:destination="@id/essay_viewer"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <action
             android:id="@+id/action_todayTopicFragment_to_writeEssay"
-            app:destination="@id/writeEssay" />
+            app:destination="@id/writeEssay"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+        <action
+            android:id="@+id/action_todayTopicFragment_to_subscriberFragment"
+            app:destination="@id/subscriberFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
     </fragment>
     <fragment
         android:id="@+id/myEssayPage"
@@ -117,23 +161,43 @@
         tools:layout="@layout/fragment_my_essay_page" >
         <action
             android:id="@+id/action_myEssayPage_self"
-            app:destination="@id/myEssayPage" />
-        <action
-            android:id="@+id/action_myEssayPage_to_subscribeFragment"
-            app:destination="@id/subscribeFragment" />
+            app:destination="@id/myEssayPage"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
         <action
             android:id="@+id/action_myEssayPage_to_message_main"
-            app:destination="@id/message_main" />
+            app:destination="@id/message_main"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
         <action
             android:id="@+id/action_myEssayPage_to_essay_viewer"
-            app:destination="@id/essay_viewer" />
+            app:destination="@id/essay_viewer"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
         <action
             android:id="@+id/action_myEssayPage_to_message_chat_list"
-            app:destination="@id/message_chat_list" />
+            app:destination="@id/message_chat_list"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <argument
             android:name="logkey"
             app:argType="string"
             android:defaultValue='""' />
+        <action
+            android:id="@+id/action_myEssayPage_to_subscriberFragment"
+            app:destination="@id/subscriberFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/message_main"
@@ -142,16 +206,32 @@
         tools:layout="@layout/fragment_message_main" >
         <action
             android:id="@+id/action_message_main_to_myEssayPage"
-            app:destination="@id/myEssayPage" />
-        <action
-            android:id="@+id/action_message_main_to_subscribeFragment"
-            app:destination="@id/subscribeFragment" />
+            app:destination="@id/myEssayPage"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
         <action
             android:id="@+id/action_message_main_self"
-            app:destination="@id/message_main" />
+            app:destination="@id/message_main"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
         <action
             android:id="@+id/action_message_main_to_message_chat_list"
-            app:destination="@id/message_chat_list" />
+            app:destination="@id/message_chat_list"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_message_main_to_subscriberFragment"
+            app:destination="@id/subscriberFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
     </fragment>
     <fragment
         android:id="@+id/essay_viewer"
@@ -160,16 +240,32 @@
         tools:layout="@layout/fragment_essay_viewer" >
         <action
             android:id="@+id/action_essay_viewer_to_myEssayPage"
-            app:destination="@id/myEssayPage" />
-        <action
-            android:id="@+id/action_essay_viewer_to_subscribeFragment"
-            app:destination="@id/subscribeFragment" />
+            app:destination="@id/myEssayPage"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
         <action
             android:id="@+id/action_essay_viewer_to_message_main"
-            app:destination="@id/message_main" />
+            app:destination="@id/message_main"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
         <action
             android:id="@+id/action_essay_viewer_to_writeEssay"
-            app:destination="@id/writeEssay" />
+            app:destination="@id/writeEssay"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+        <action
+            android:id="@+id/action_essay_viewer_to_subscriberFragment"
+            app:destination="@id/subscriberFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/message_chat_list"
@@ -178,43 +274,28 @@
         tools:layout="@layout/fragment_message_chat_list" >
         <action
             android:id="@+id/action_message_chat_list_to_myEssayPage"
-            app:destination="@id/myEssayPage" />
-        <action
-            android:id="@+id/action_message_chat_list_to_subscribeFragment"
-            app:destination="@id/subscribeFragment" />
+            app:destination="@id/myEssayPage"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <action
             android:id="@+id/action_message_chat_list_to_message_main"
-            app:destination="@id/message_main" />
-        <action
-            android:id="@+id/action_message_chat_list_to_message_viewer"
-            app:destination="@id/message_viewer" />
+            app:destination="@id/message_main"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
         <argument
             android:name="logKey"
             app:argType="string"
             android:defaultValue='""' />
-    </fragment>
-    <fragment
-        android:id="@+id/message_send"
-        android:name="com.example.swengineering.Message_send"
-        android:label="fragment_message_send"
-        tools:layout="@layout/fragment_message_send" >
         <action
-            android:id="@+id/action_message_send_to_myEssayPage"
-            app:destination="@id/myEssayPage" />
-        <action
-            android:id="@+id/action_message_send_to_subscribeFragment"
-            app:destination="@id/subscribeFragment" />
-        <action
-            android:id="@+id/action_message_send_to_message_main"
-            app:destination="@id/message_main" />
-    </fragment>
-    <fragment
-        android:id="@+id/message_viewer"
-        android:name="com.example.swengineering.Message_viewer"
-        android:label="fragment_message_viewer"
-        tools:layout="@layout/fragment_message_viewer" >
-        <action
-            android:id="@+id/action_message_viewer_to_message_send"
-            app:destination="@id/message_send" />
+            android:id="@+id/action_message_chat_list_to_subscriberFragment"
+            app:destination="@id/subscriberFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
     </fragment>
 </navigation>

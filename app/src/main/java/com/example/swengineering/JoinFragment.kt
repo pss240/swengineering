@@ -52,10 +52,17 @@ class JoinFragment : Fragment() {
         button_Join_Join.setOnClickListener {
             val email = input_Join_Email.text.toString()
             val password = input_Join_Password.text.toString()
+            val passwordCheck = input_Join_PasswordCheck.text.toString()
             val nickname = input_Join_NickName.text.toString()
 
-            if(email.isEmpty() or password.isEmpty()){
-
+            if(email.isEmpty() or password.isEmpty() or passwordCheck.isEmpty() or nickname.isEmpty()){
+                Toast.makeText(it.context,"공백없이 입력해 주세요",Toast.LENGTH_SHORT).show()
+            }
+            else if(password.length<6){
+                Toast.makeText(it.context,"비밀번호를 6자리 이상 입력해 주세요",Toast.LENGTH_SHORT).show()
+            }
+            else if(!password.equals(passwordCheck)){
+                Toast.makeText(it.context,"비밀번호를 동일하게 입력해 주세요", Toast.LENGTH_SHORT).show()
             }
             else{
                 auth.createUserWithEmailAndPassword(email, password)
@@ -63,7 +70,7 @@ class JoinFragment : Fragment() {
                         if (task.isSuccessful) {
 
                             FBRef.UsersRef.child(FBAuth.getUid()).setValue(UserModel(email,nickname,FBAuth.getUid()))
-                            navController.navigate(R.id.action_joinFragment_to_loginFragment)
+                            navController.popBackStack()
 
                             Toast.makeText(it.context,"회원가입 성공", Toast.LENGTH_SHORT).show()
 

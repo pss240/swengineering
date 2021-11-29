@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/button_welcome_to_main"
+        android:title="Home"
+        />
     <item
         android:id="@+id/button_welcome_MyEssay"
         android:title="My Page"
         />
     <item
-        android:id="@+id/button_welcome_Subscribe"
-        android:title="Subscribe"
+        android:id="@+id/button_welcome_Subscriber"
+        android:title="Subscriber"
         />
     <item
         android:id="@+id/button_welcome_Message"
         android:title="Message"
         />
+    <item
+        android:id="@+id/button_Logout"
+        android:title="LogOut" />
 
-    <item
-        android:id="@+id/button_welcome_Settings"
-        android:title="Settings"
-        />
-    <item
-        android:id="@+id/button_welcome_Notice"
-        android:title="Notice"
-        />
 </menu>

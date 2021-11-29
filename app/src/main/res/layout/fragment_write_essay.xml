@@ -10,13 +10,15 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/appBackgroundColor">
 
         <ImageButton
             android:id="@+id/button_welcome_drawmenu"
             android:layout_width="34dp"
             android:layout_height="35dp"
             android:layout_marginTop="16dp"
+            android:background="#00000000"
             android:src="@drawable/hamburger"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.082"
@@ -31,7 +33,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="56dp"
             android:text="Topic : "
-            android:textColor="@color/black"
+            android:textStyle="bold"
             android:textSize="25sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button_welcome_drawmenu" />
@@ -65,55 +67,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/input_TopicName" />
 
-        <TextView
-            android:id="@+id/textView_hashtag"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="40dp"
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            android:text="HashTag"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/input_TopicContents" />
-
-        <EditText
-            android:id="@+id/editTextTextPersonName2"
-            android:layout_width="197dp"
-            android:layout_height="47dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="32dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="#food"
-            android:textColor="@color/inputblank"
-            android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@+id/textView_hashtag"
-            app:layout_constraintTop_toBottomOf="@+id/input_TopicContents" />
-
-        <TextView
-            android:id="@+id/textView_hashtags"
-            android:layout_width="348dp"
-            android:layout_height="72dp"
-            android:layout_marginTop="24dp"
-            android:text=""
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.492"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
-
         <Button
             android:id="@+id/button_write_essay_save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
             android:text="Save"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.9"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView_hashtags" />
+            app:layout_constraintTop_toBottomOf="@+id/input_TopicContents" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -45,8 +45,6 @@ class SubscriberFragment : Fragment() {
 
         getdata()
 
-        Log.d("dddddddd",subscribers.toString())
-
 
         RCAdapter = CustomAdapter_Subscriber(subscribers,requireContext(), view)
         recyclerview_subscriber.layoutManager = LinearLayoutManager(requireContext())

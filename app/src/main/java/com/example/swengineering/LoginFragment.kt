@@ -3,12 +3,14 @@ package com.example.swengineering
 import android.app.Activity
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.HandlerCompat.postDelayed
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
@@ -21,7 +23,9 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
+import kotlinx.android.synthetic.main.fragment_join.*
 import kotlinx.android.synthetic.main.fragment_login.*
+import kotlinx.coroutines.delay
 
 
 class LoginFragment : Fragment(){
@@ -51,9 +55,10 @@ class LoginFragment : Fragment(){
         button_login.setOnClickListener {
             val email = input_ID?.text.toString()
             val password = input_Password?.text.toString()
+            nickname = " "
 
-            if(email.isEmpty() or password.isEmpty()){
-                Toast.makeText(it.context,"아이디 또는 비밀번호를 입력하시오!!",Toast.LENGTH_SHORT).show()
+            if(email.isEmpty() or password.isEmpty()) {
+                Toast.makeText(it.context,"아이디 또는 비밀번호를 입력하세요",Toast.LENGTH_SHORT).show()
 
             }
             else{
@@ -62,21 +67,10 @@ class LoginFragment : Fragment(){
                         if (task.isSuccessful) {
                             Toast.makeText(it.context,"로그인 성공",Toast.LENGTH_SHORT).show()
 
-                            FBRef.UsersRef.addValueEventListener(object : ValueEventListener {
+                            FBRef.UsersRef.child(FBAuth.getUid()).addValueEventListener(object : ValueEventListener {
                                 override fun onDataChange(dataSnapshot: DataSnapshot) {
 
-                                    for(dataModel in dataSnapshot.children){
-
-                                        val item = dataModel.getValue(UserModel::class.java)
-
-                                        if(FBAuth.getUid().equals(item?.uid)){
-                                            nickname = item!!.nickname
-                                            Toast.makeText(it.context, nickname,Toast.LENGTH_SHORT).show()
-                                            break
-                                        }
-
-
-                                    }
+                                    nickname = dataSnapshot.getValue(UserModel::class.java)!!.nickname
                                 }
 
                                 override fun onCancelled(error: DatabaseError) {
@@ -85,14 +79,20 @@ class LoginFragment : Fragment(){
                                 }
                             })
 
-                            it.findNavController().navigate(R.id.action_loginFragment_to_welcomeFragment)
+                            Handler().postDelayed({
+                                it.findNavController().navigate(R.id.action_loginFragment_to_welcomeFragment)
+                            },1100L)
+
                         } else {
                             Toast.makeText(it.context,"로그인 실패",Toast.LENGTH_SHORT).show()
                         }
+
                     }
             }
         }
-        button_join.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.joinFragment,null))
+        button_join.setOnClickListener{
+            navController.navigate(R.id.action_loginFragment_to_joinFragment)
+        }
     }
 
 

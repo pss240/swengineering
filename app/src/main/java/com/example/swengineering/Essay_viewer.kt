@@ -15,17 +15,13 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.swengineering.FB.FBAuth
 import com.example.swengineering.FB.FBRef
-import com.example.swengineering.FB.FBRef.Companion.database
 import com.example.swengineering.model.CommentModel
 import com.example.swengineering.model.EssayModel
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.fragment_essay_viewer.*
-import kotlinx.android.synthetic.main.fragment_welcome.*
 import kotlinx.android.synthetic.main.fragment_welcome.button_welcome_drawmenu
 import kotlinx.android.synthetic.main.fragment_welcome.layout_drawer_welcome
 import kotlinx.android.synthetic.main.fragment_welcome.naviview_Welcome
@@ -73,7 +69,6 @@ class Essay_viewer : Fragment(), NavigationView.OnNavigationItemSelectedListener
 
                 if(dataSnapshot.child(essayKey).hasChildren()) {
                     item2 = dataSnapshot.child(essayKey).getValue(EssayModel::class.java)!!
-                    Log.d("item2 after", item2.toString())
 
                     var tv1 = v.findViewById<TextView>(R.id.textView_essay_viewer_topic)
                     var tv2 = v.findViewById<TextView>(R.id.textView_essay_viewer_writer)
@@ -97,7 +92,6 @@ class Essay_viewer : Fragment(), NavigationView.OnNavigationItemSelectedListener
 
         if(chk == 1)
             navController.popBackStack()
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -117,7 +111,6 @@ class Essay_viewer : Fragment(), NavigationView.OnNavigationItemSelectedListener
                     if(item != null){
                         Uid = item!!.uid
                     }
-//                    RCAdapter.notifyDataSetChanged()
                 }
                 override fun onCancelled(error: DatabaseError) {
                     // Failed to read value
@@ -159,7 +152,6 @@ class Essay_viewer : Fragment(), NavigationView.OnNavigationItemSelectedListener
                     )
                 )
 
-//            textview_thumb.setText((item2.thumb.toInt() + 1).toString())
         }
         button_comment_plus.setOnClickListener {
             FBRef.commentRef
@@ -202,11 +194,12 @@ class Essay_viewer : Fragment(), NavigationView.OnNavigationItemSelectedListener
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             R.id.button_welcome_MyEssay -> {
+                Uid = FBAuth.getUid()
                 navController.navigate(R.id.action_essay_viewer_to_myEssayPage)
                 layout_drawer_welcome.closeDrawers()
             }
-            R.id.button_welcome_Subscribe -> {
-                navController.navigate(R.id.action_essay_viewer_to_subscribeFragment)
+            R.id.button_welcome_Subscriber -> {
+                navController.navigate(R.id.action_essay_viewer_to_subscriberFragment)
                 layout_drawer_welcome.closeDrawers()
             }
             R.id.button_welcome_Message -> {
@@ -214,11 +207,12 @@ class Essay_viewer : Fragment(), NavigationView.OnNavigationItemSelectedListener
                 layout_drawer_welcome.closeDrawers()
             }
 
-            R.id.button_welcome_Settings -> {
-                layout_drawer_welcome.closeDrawers()
+            R.id.button_welcome_to_main -> {
+                navController.navigate(R.id.welcomeFragment)
             }
-            R.id.button_welcome_Notice -> {
-                layout_drawer_welcome.closeDrawers()
+            R.id.button_Logout -> {
+                auth.signOut()
+                navController.popBackStack(R.id.loginFragment,true,false)
             }
         }
         return true
