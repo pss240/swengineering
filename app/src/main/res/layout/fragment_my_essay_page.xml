@@ -35,7 +35,20 @@
             app:layout_constraintStart_toEndOf="@+id/textView_mypage_user_name"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
+    <Button
+        android:id="@+id/button_sendMsg"
+        android:layout_width="45dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginEnd="16dp"
+        android:text="메"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/button_mypage_editName"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
             android:id="@+id/textView_mypage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -71,27 +84,17 @@
             app:layout_constraintStart_toEndOf="@+id/imageView_Profile_User"
             app:layout_constraintTop_toBottomOf="@+id/textView_mypage" />
 
-        <TextView
-            android:id="@+id/textView_mypage_user_id"
-            android:layout_width="200dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="6dp"
-            android:text="ID(email)"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.392"
-            app:layout_constraintStart_toEndOf="@+id/imageView_Profile_User"
-            app:layout_constraintTop_toBottomOf="@+id/textView_mypage_user_name" />
+    <TextView
+        android:id="@+id/textView_mypage_user_id"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="6dp"
+        android:text="ID(email)"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.392"
+        app:layout_constraintStart_toEndOf="@+id/imageView_Profile_User"
+        app:layout_constraintTop_toBottomOf="@+id/textView_mypage_user_name" />
 
-        <TextView
-            android:id="@+id/textView_mypage_user_language"
-            android:layout_width="200dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="6dp"
-            android:text="Language"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.392"
-            app:layout_constraintStart_toEndOf="@+id/imageView_Profile_User"
-            app:layout_constraintTop_toBottomOf="@+id/textView_mypage_user_id" />
 
         <TextView
             android:id="@+id/textView_mypage_user_subscriber_count"
@@ -204,8 +207,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_my_essay_todays_topic" />
 
+    <Button
+        android:id="@+id/button_subscribe"
+        android:layout_width="70dp"
+        android:layout_height="39dp"
+        android:layout_marginEnd="16dp"
+        android:text="구독"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_mypage_user_id" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.navigation.NavigationView
         android:layout_width="match_parent"

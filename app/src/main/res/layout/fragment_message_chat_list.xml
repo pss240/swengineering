@@ -36,6 +36,28 @@ tools:context=".Message_chat_list">
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_welcome_drawmenu" />
 
+    <EditText
+        android:id="@+id/editText_msg"
+        android:hint="메세지를 입력하세요."
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="100dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button_send"
+        android:layout_width="62dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="16dp"
+        android:text="등록"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.289"
+        app:layout_constraintStart_toEndOf="@+id/editText_msg" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview_message_chat_list"
         android:layout_width="357dp"

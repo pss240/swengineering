@@ -84,7 +84,11 @@
     <fragment
         android:id="@+id/subscriberFragment"
         android:name="com.example.swengineering.SubscriberFragment"
-        android:label="SubscriberFragment" />
+        android:label="SubscriberFragment" >
+        <action
+            android:id="@+id/action_subscriberFragment_to_myEssayPage"
+            app:destination="@id/myEssayPage" />
+    </fragment>
     <fragment
         android:id="@+id/todayTopicFragment"
         android:name="com.example.swengineering.TodayTopicFragment"
@@ -123,6 +127,13 @@
         <action
             android:id="@+id/action_myEssayPage_to_essay_viewer"
             app:destination="@id/essay_viewer" />
+        <action
+            android:id="@+id/action_myEssayPage_to_message_chat_list"
+            app:destination="@id/message_chat_list" />
+        <argument
+            android:name="logkey"
+            app:argType="string"
+            android:defaultValue='""' />
     </fragment>
     <fragment
         android:id="@+id/message_main"
@@ -177,6 +188,10 @@
         <action
             android:id="@+id/action_message_chat_list_to_message_viewer"
             app:destination="@id/message_viewer" />
+        <argument
+            android:name="logKey"
+            app:argType="string"
+            android:defaultValue='""' />
     </fragment>
     <fragment
         android:id="@+id/message_send"

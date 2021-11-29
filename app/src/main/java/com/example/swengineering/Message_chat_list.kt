@@ -1,6 +1,7 @@
 package com.example.swengineering
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MenuItem
@@ -9,13 +10,21 @@ import android.view.ViewGroup
 import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.swengineering.FB.FBAuth
+import com.example.swengineering.FB.FBRef
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.fragment_message_chat_list.*
 import kotlinx.android.synthetic.main.fragment_welcome.*
 import kotlinx.android.synthetic.main.fragment_welcome.button_welcome_drawmenu
 import kotlinx.android.synthetic.main.fragment_welcome.layout_drawer_welcome
 import kotlinx.android.synthetic.main.fragment_welcome.naviview_Welcome
+import kotlin.math.log
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -49,34 +58,81 @@ class Message_chat_list : Fragment(), NavigationView.OnNavigationItemSelectedLis
     }
     //메뉴 네비게이션 코드 시작부
     lateinit var navController : NavController
+    lateinit var RCAdapter : CustomAdapter_Message_chat_list
+    lateinit var items : ArrayList<Data_Message_chat_list>
+    var logKey : String = ""
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
         button_welcome_drawmenu.setOnClickListener{layout_drawer_welcome.openDrawer(GravityCompat.START)}
         naviview_Welcome.setNavigationItemSelectedListener(this)
 
-        var item = arrayListOf(
-            Data_Message_chat_list("send", "chatting"),
-            Data_Message_chat_list("post", "chatting"),
-            Data_Message_chat_list("send", "chatting"),
-            Data_Message_chat_list("post", "chatting"),
-            Data_Message_chat_list("send", "chatting"),
-            Data_Message_chat_list("post", "chatting"),
-            Data_Message_chat_list("send", "chatting"),
-            Data_Message_chat_list("post", "chatting"),
-            Data_Message_chat_list("send", "chatting"),
-            Data_Message_chat_list("post", "chatting"),
-            Data_Message_chat_list("send", "chatting"),
-            Data_Message_chat_list("post", "chatting"),
-            Data_Message_chat_list("send", "chatting"),
-        )
+        items = arrayListOf()
+
+        FBRef.logRef.child(FBAuth.getUid()).addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for(dataModel in dataSnapshot.children){
+                    if(Uid.equals(dataModel.value)){
+                        logKey = dataModel.key.toString()
+                        Log.d("로그키!!",logKey)
+                        return
+                    }
+                }
+                push()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.w("WelcomeFragment", "Failed to read value.", error.toException())
+            }
+        })
 
 
+        button_send.setOnClickListener {
+
+            FBRef.msgRef.child(logKey).push().setValue(nickname+": "+editText_msg.text)
+
+        }
+
+        getdata()
+
+        RCAdapter = CustomAdapter_Message_chat_list(items, requireContext(),view)
         recyclerview_message_chat_list.layoutManager = LinearLayoutManager(requireContext())
-        recyclerview_message_chat_list.adapter = CustomAdapter_Message_chat_list(item, requireContext(),view)
+        recyclerview_message_chat_list.adapter = RCAdapter
 
 
     }
+
+    fun push(){
+
+        val pushedPostRef: DatabaseReference = FBRef.logRef.child(FBAuth.getUid()).push()
+        logKey = pushedPostRef.key.toString()
+
+        FBRef.logRef.child(FBAuth.getUid()).child(logKey).setValue(Uid)
+        FBRef.logRef.child(Uid).child(logKey).setValue(FBAuth.getUid())
+
+    }
+
+    fun getdata(){
+        FBRef.msgRef.child(logKey).addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                items.clear()
+                for(dataModel in dataSnapshot.children){
+                    for(dataModel2 in dataModel.children){
+                      val content = dataModel2.value
+                      items.add(Data_Message_chat_list(content.toString()))
+                    }
+                }
+
+                RCAdapter.notifyDataSetChanged()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.w("WelcomeFragment", "Failed to read value.", error.toException())
+            }
+        })
+    }
+
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             R.id.button_welcome_MyEssay -> {
