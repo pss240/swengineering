@@ -88,7 +88,7 @@ class Message_main : Fragment(), NavigationView.OnNavigationItemSelectedListener
                                     for (dataModel3 in dataSnapshot.children) {
 
                                         if(dataModel2.value.toString() == dataModel3.getValue(UserModel::class.java)?.uid.toString()) {
-                                            item_log.add(0, Data_Message_Main_Log(dataModel3.getValue(UserModel::class.java)!!.email, "asd",dataModel3.getValue(UserModel::class.java)!!.uid))
+                                            item_log.add(0, Data_Message_Main_Log(dataModel3.getValue(UserModel::class.java)!!.email, dataModel3.getValue(UserModel::class.java)!!.nickname,dataModel3.getValue(UserModel::class.java)!!.uid))
                                             break
                                         }
                                     }
@@ -105,8 +105,6 @@ class Message_main : Fragment(), NavigationView.OnNavigationItemSelectedListener
                                     )
                                 }
                             })
-//                            Log.e("asd",key)
-//                            item_log.add(0, Data_Message_Main_Log(key, "asd"))
 
                         }
                     }
@@ -114,7 +112,6 @@ class Message_main : Fragment(), NavigationView.OnNavigationItemSelectedListener
                     RCAdapter.notifyDataSetChanged()
                 }
             }
-
             override fun onCancelled(error: DatabaseError) {
                 // Failed to read value
                 Log.w("WelcomeFragment", "Failed to read value.", error.toException())
