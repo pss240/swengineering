@@ -1,5 +1,6 @@
 package com.example.swengineering
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -226,8 +227,13 @@ class Essay_viewer : Fragment(), NavigationView.OnNavigationItemSelectedListener
                 layout_drawer_welcome.closeDrawer(GravityCompat.START)
             }
             R.id.button_Logout -> {
-                auth.signOut()
-                navController.popBackStack(R.id.loginFragment,true,false)
+                val context = getContext()
+                val packageManager = context?.packageManager
+                val intent = packageManager?.getLaunchIntentForPackage(context.packageName)
+                val componentName = intent!!.component
+                val mainIntent = Intent.makeRestartActivityTask(componentName)
+                context.startActivity(mainIntent)
+                Runtime.getRuntime().exit(0)
             }
         }
         return true
