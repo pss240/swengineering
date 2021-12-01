@@ -37,6 +37,7 @@ class WelcomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedListe
     lateinit var navController : NavController
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         navController = Navigation.findNavController(view)
         button_welcome_drawmenu.setOnClickListener{layout_drawer_welcome.openDrawer(GravityCompat.START)}
         naviview_Welcome.setNavigationItemSelectedListener(this)

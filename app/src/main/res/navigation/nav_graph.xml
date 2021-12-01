@@ -112,6 +112,12 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_subscriberFragment_self"
+            app:destination="@id/subscriberFragment" />
+        <action
+            android:id="@+id/action_subscriberFragment_to_message_main"
+            app:destination="@id/message_main" />
     </fragment>
     <fragment
         android:id="@+id/todayTopicFragment"
@@ -153,6 +159,7 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+
     </fragment>
     <fragment
         android:id="@+id/myEssayPage"

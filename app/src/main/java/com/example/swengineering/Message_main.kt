@@ -128,7 +128,7 @@ class Message_main : Fragment(), NavigationView.OnNavigationItemSelectedListener
                 layout_drawer_welcome.closeDrawer(GravityCompat.START)
             }
             R.id.button_welcome_Subscriber -> {
-                navController.navigate(R.id.action_todayTopicFragment_to_subscriberFragment)
+                navController.navigate(R.id.subscriberFragment)
                 layout_drawer_welcome.closeDrawer(GravityCompat.START)
             }
             R.id.button_welcome_Message -> {
