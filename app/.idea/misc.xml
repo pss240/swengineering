@@ -1,5 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/User/AndroidStudioProjects/swengineering/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/swengineering/app/src/main/res/layout/custom_list_subscirbe.xml" value="0.14260385005065856" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/swengineering/app/src/main/res/layout/fragment_anthology.xml" value="0.25" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/swengineering/app/src/main/res/layout/fragment_essay_viewer.xml" value="0.33" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/swengineering/app/src/main/res/layout/fragment_freeboard.xml" value="0.25" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/swengineering/app/src/main/res/layout/fragment_join.xml" value="0.33" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/swengineering/app/src/main/res/layout/fragment_login.xml" value="0.17806484295845998" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/swengineering/app/src/main/res/layout/fragment_message_chat_list.xml" value="0.25" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/swengineering/app/src/main/res/layout/fragment_message_main.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/swengineering/app/src/main/res/layout/fragment_message_send.xml" value="0.22" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/swengineering/app/src/main/res/layout/fragment_message_viewer.xml" value="0.17806484295845998" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/swengineering/app/src/main/res/layout/fragment_my_essay_page.xml" value="0.25" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/swengineering/app/src/main/res/layout/fragment_mypage.xml" value="0.33" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/swengineering/app/src/main/res/layout/fragment_profile.xml" value="0.17806484295845998" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/swengineering/app/src/main/res/layout/fragment_subscribe.xml" value="0.25" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/swengineering/app/src/main/res/layout/fragment_subscriber.xml" value="0.17806484295845998" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/swengineering/app/src/main/res/layout/fragment_today_topic.xml" value="0.33" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/swengineering/app/src/main/res/layout/fragment_welcome.xml" value="0.17806484295845998" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/swengineering/app/src/main/res/layout/fragment_write_essay.xml" value="0.25" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/swengineering/app/src/main/res/menu/drawer_nav_menu_welcome.xml" value="0.15185185185185185" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

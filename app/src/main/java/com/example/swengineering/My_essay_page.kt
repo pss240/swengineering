@@ -65,6 +65,7 @@ class MyEssayPage : Fragment(), NavigationView.OnNavigationItemSelectedListener 
 
         items = arrayListOf()
         arrayList = arrayListOf()
+        var sub_button = view.findViewById<Button>(R.id.button_subscribe)
 
 
 
@@ -73,7 +74,7 @@ class MyEssayPage : Fragment(), NavigationView.OnNavigationItemSelectedListener 
         naviview_Welcome.setNavigationItemSelectedListener(this)
 
         getData(view)
-        getsubscribers()
+        getsubscribers(sub_button)
 
         RCAdapter = CustomAdapter_My_essay_page(items, requireContext(), view)
 
@@ -106,13 +107,17 @@ class MyEssayPage : Fragment(), NavigationView.OnNavigationItemSelectedListener 
             navController.navigate(R.id.action_myEssayPage_to_message_chat_list)
 
         }
+
+
         button_subscribe.setOnClickListener {
 
             if(arrayList.contains(Uid)){
                 FBRef.subscribeRef.child(FBAuth.getUid()).child(Uid).removeValue()
+                sub_button.setText("구독")
             }
             else {
                 FBRef.subscribeRef.child(FBAuth.getUid()).child(Uid).setValue("")
+                sub_button.setText("구독 중")
             }
         }
         unregister.setOnClickListener {
@@ -146,7 +151,7 @@ class MyEssayPage : Fragment(), NavigationView.OnNavigationItemSelectedListener 
             alertDialog.show()
         }
     }
-        fun getsubscribers() {
+        fun getsubscribers(sub_button : Button) {
             FBRef.subscribeRef.child(FBAuth.getUid())
                 .addValueEventListener(object : ValueEventListener {
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -156,6 +161,10 @@ class MyEssayPage : Fragment(), NavigationView.OnNavigationItemSelectedListener 
 
                             arrayList.add(item.toString())
                         }
+                        if(arrayList.contains(Uid))
+                            sub_button.setText("구독 중")
+                        else
+                            sub_button.setText("구독")
                     }
 
 
