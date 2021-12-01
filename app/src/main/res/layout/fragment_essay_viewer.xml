@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:text="33"
+            android:text=" "
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.148"
             app:layout_constraintStart_toEndOf="@+id/imageView_essay_viewer_comment_image"
@@ -95,22 +95,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            android:text=""
+            android:text=" "
             app:layout_constraintBottom_toTopOf="@+id/recycleView_essay_viewer_comment"
             app:layout_constraintStart_toEndOf="@+id/button_essay_viewer_like" />
 
         <ImageView
-            android:background="#00000000"
             android:id="@+id/imageView_essay_viewer_comment_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="#00000000"
             android:src="@drawable/ic_baseline_chat_bubble_24"
             app:layout_constraintBottom_toTopOf="@+id/recycleView_essay_viewer_comment"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.713"
             app:layout_constraintStart_toEndOf="@+id/button_essay_viewer_like"
             app:layout_constraintTop_toBottomOf="@+id/textView_essay_viewer_text"
-            app:layout_constraintVertical_bias="0.755" />
+            app:layout_constraintVertical_bias="0.568" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycleView_essay_viewer_comment"

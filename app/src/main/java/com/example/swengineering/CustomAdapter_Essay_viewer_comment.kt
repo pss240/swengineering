@@ -4,14 +4,16 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.example.swengineering.FB.FBAuth
 import com.example.swengineering.FB.FBRef
 import com.example.swengineering.model.CommentModel
 import com.example.swengineering.model.EssayModel
 import kotlinx.android.synthetic.main.custom_list_essay_comment.view.*
 import kotlinx.android.synthetic.main.fragment_essay_viewer.*
 
-class Data_Essay_viewer_comment(val name : String, val content : String,val thumb: String,val commentkey : String)
+class Data_Essay_viewer_comment(val name : String, val content : String,val thumb: String,val commentkey : String, val uid : String)
 
 class CustomViewHolder_Essay_viewer_comment(v: View) : RecyclerView.ViewHolder(v) {
     val name = v.textView_custom_essay_comment_userName
@@ -46,10 +48,17 @@ class CustomAdapter_Essay_viewer_comment (val DataList : ArrayList<Data_Essay_vi
                 )
         }
         holder.button_delete_comment.setOnClickListener {
-            FBRef.commentRef
-                .child(essayKey)
-                .child(curData.commentkey)
-                .removeValue()
+            if(curData.uid == FBAuth.getUid()) {
+                FBRef.commentRef
+                    .child(essayKey)
+                    .child(curData.commentkey)
+                    .removeValue()
+                Toast.makeText(it.context,"댓글이 삭제되었습니다", Toast.LENGTH_SHORT).show()
+
+            }
+            else
+                Toast.makeText(it.context,"권한이 없습니다", Toast.LENGTH_SHORT).show()
+
         }
     }
 

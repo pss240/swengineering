@@ -154,15 +154,24 @@ class Essay_viewer : Fragment(), NavigationView.OnNavigationItemSelectedListener
 
         }
         button_comment_plus.setOnClickListener {
-            FBRef.commentRef
-                .child(essayKey)
-                .push()
-                .setValue(
-                    CommentModel(nickname,editText_essay_viewer_write_comment.text.toString(),"0")
-                )
+            if(editText_essay_viewer_write_comment.text.toString() != "") {
+                FBRef.commentRef
+                    .child(essayKey)
+                    .push()
+                    .setValue(
+                        CommentModel(
+                            nickname,
+                            editText_essay_viewer_write_comment.text.toString(),
+                            "0"
+                        )
+                    )
+                editText_essay_viewer_write_comment.setText("")
+                Toast.makeText(it.context,"댓글이 등록되었습니다",Toast.LENGTH_SHORT).show()
+
+            }
         }
 
-        comment_getdata()
+        comment_getdata(view)
 
         RCAdapter = CustomAdapter_Essay_viewer_comment(comment_items,requireContext())
         recycleView_essay_viewer_comment.layoutManager = LinearLayoutManager(requireContext())
@@ -170,14 +179,18 @@ class Essay_viewer : Fragment(), NavigationView.OnNavigationItemSelectedListener
     }
 
 
-    fun comment_getdata(){
+    fun comment_getdata(v : View){
         FBRef.commentRef.child(essayKey).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 comment_items.clear()
                 for(dataModel in dataSnapshot.children){
                     val item = dataModel.getValue(CommentModel::class.java)
-                    comment_items.add(Data_Essay_viewer_comment(item!!.commentNick,item!!.commentBody,item!!.commentThumb,dataModel.key!!))
+                    comment_items.add(Data_Essay_viewer_comment(item!!.commentNick,item!!.commentBody,item!!.commentThumb,dataModel.key!!, FBAuth.getUid()))
                 }
+
+                val cc = v.findViewById<TextView>(R.id.textView_essay_viewer_comment_count)
+
+                cc.setText(dataSnapshot.childrenCount.toString())
 
                 RCAdapter.notifyDataSetChanged()
             }
@@ -195,20 +208,21 @@ class Essay_viewer : Fragment(), NavigationView.OnNavigationItemSelectedListener
         when(item.itemId) {
             R.id.button_welcome_MyEssay -> {
                 Uid = FBAuth.getUid()
-                navController.navigate(R.id.action_essay_viewer_to_myEssayPage)
-                layout_drawer_welcome.closeDrawers()
+                navController.navigate(R.id.action_todayTopicFragment_to_myEssayPage)
+                layout_drawer_welcome.closeDrawer(GravityCompat.START)
             }
             R.id.button_welcome_Subscriber -> {
-                navController.navigate(R.id.action_essay_viewer_to_subscriberFragment)
-                layout_drawer_welcome.closeDrawers()
+                navController.navigate(R.id.action_todayTopicFragment_to_subscriberFragment)
+                layout_drawer_welcome.closeDrawer(GravityCompat.START)
             }
             R.id.button_welcome_Message -> {
-                navController.navigate(R.id.action_essay_viewer_to_message_main)
-                layout_drawer_welcome.closeDrawers()
+                navController.navigate(R.id.action_todayTopicFragment_to_message_main)
+                layout_drawer_welcome.closeDrawer(GravityCompat.START)
             }
 
             R.id.button_welcome_to_main -> {
                 navController.navigate(R.id.welcomeFragment)
+                layout_drawer_welcome.closeDrawer(GravityCompat.START)
             }
             R.id.button_Logout -> {
                 auth.signOut()

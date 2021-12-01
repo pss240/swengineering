@@ -29,6 +29,10 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.fragment_my_essay_page.*
+import kotlinx.android.synthetic.main.fragment_my_essay_page.button_welcome_drawmenu
+import kotlinx.android.synthetic.main.fragment_my_essay_page.layout_drawer_welcome
+import kotlinx.android.synthetic.main.fragment_my_essay_page.naviview_Welcome
+import kotlinx.android.synthetic.main.fragment_welcome.*
 
 
 class MyEssayPage : Fragment(), NavigationView.OnNavigationItemSelectedListener {
@@ -232,19 +236,21 @@ class MyEssayPage : Fragment(), NavigationView.OnNavigationItemSelectedListener 
         when (item.itemId) {
             R.id.button_welcome_MyEssay -> {
                 Uid = FBAuth.getUid()
-                navController.navigate(R.id.action_myEssayPage_self)
-                layout_drawer_welcome.closeDrawers()
+                navController.navigate(R.id.action_todayTopicFragment_to_myEssayPage)
+                layout_drawer_welcome.closeDrawer(GravityCompat.START)
             }
             R.id.button_welcome_Subscriber -> {
-                navController.navigate(R.id.action_myEssayPage_to_subscriberFragment)
-                layout_drawer_welcome.closeDrawers()
+                navController.navigate(R.id.action_todayTopicFragment_to_subscriberFragment)
+                layout_drawer_welcome.closeDrawer(GravityCompat.START)
             }
             R.id.button_welcome_Message -> {
-                navController.navigate(R.id.action_myEssayPage_to_message_main)
-                layout_drawer_welcome.closeDrawers()
+                navController.navigate(R.id.action_todayTopicFragment_to_message_main)
+                layout_drawer_welcome.closeDrawer(GravityCompat.START)
             }
+
             R.id.button_welcome_to_main -> {
                 navController.navigate(R.id.welcomeFragment)
+                layout_drawer_welcome.closeDrawer(GravityCompat.START)
             }
             R.id.button_Logout -> {
                 auth.signOut()

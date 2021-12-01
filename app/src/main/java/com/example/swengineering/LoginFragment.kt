@@ -81,7 +81,7 @@ class LoginFragment : Fragment(){
 
                             Handler().postDelayed({
                                 it.findNavController().navigate(R.id.action_loginFragment_to_welcomeFragment)
-                            },1100L)
+                            },1200L)
 
                         } else {
                             Toast.makeText(it.context,"로그인 실패",Toast.LENGTH_SHORT).show()

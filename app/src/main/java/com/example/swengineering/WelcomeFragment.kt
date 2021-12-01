@@ -68,20 +68,21 @@ class WelcomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedListe
         when(item.itemId) {
             R.id.button_welcome_MyEssay -> {
                 Uid = FBAuth.getUid()
-                layout_drawer_welcome.closeDrawers()
                 navController.navigate(R.id.action_welcomeFragment_to_myEssayPage)
+                layout_drawer_welcome.closeDrawer(GravityCompat.START)
             }
             R.id.button_welcome_Subscriber -> {
                 navController.navigate(R.id.action_welcomeFragment_to_subscriberFragment)
-                layout_drawer_welcome.closeDrawers()
+                layout_drawer_welcome.closeDrawer(GravityCompat.START)
             }
             R.id.button_welcome_Message -> {
                 navController.navigate(R.id.action_welcomeFragment_to_message_main)
-                layout_drawer_welcome.closeDrawers()
+                layout_drawer_welcome.closeDrawer(GravityCompat.START)
             }
 
             R.id.button_welcome_to_main -> {
                 navController.navigate(R.id.welcomeFragment)
+                layout_drawer_welcome.closeDrawer(GravityCompat.START)
             }
             R.id.button_Logout -> {
                 auth.signOut()

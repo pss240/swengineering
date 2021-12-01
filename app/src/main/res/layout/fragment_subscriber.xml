@@ -7,24 +7,36 @@
     tools:context=".SubscriberFragment"
     android:background="@color/appBackgroundColor">
 
+    <ImageButton
+        android:id="@+id/button_welcome_drawmenu"
+        android:layout_width="34dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="16dp"
+        android:background="#00000000"
+        android:src="@drawable/hamburger"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.082"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
     <TextView
         android:id="@+id/textView_Subscriber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
         android:text="Subscriber"
-        android:textStyle="bold"
         android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.121"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/button_welcome_drawmenu" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview_subscriber"
         android:layout_width="410dp"
         android:layout_height="587dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="28dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_Subscriber" />
 
