@@ -135,7 +135,6 @@ class Message_main : Fragment(), NavigationView.OnNavigationItemSelectedListener
                 navController.navigate(R.id.action_todayTopicFragment_to_message_main)
                 layout_drawer_welcome.closeDrawer(GravityCompat.START)
             }
-
             R.id.button_welcome_to_main -> {
                 navController.navigate(R.id.welcomeFragment)
                 layout_drawer_welcome.closeDrawer(GravityCompat.START)

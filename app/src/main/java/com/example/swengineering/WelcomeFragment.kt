@@ -1,5 +1,9 @@
 package com.example.swengineering
 
+import android.content.ComponentName
+import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -86,8 +90,13 @@ class WelcomeFragment : Fragment(), NavigationView.OnNavigationItemSelectedListe
                 layout_drawer_welcome.closeDrawer(GravityCompat.START)
             }
             R.id.button_Logout -> {
-                auth.signOut()
-                navController.popBackStack(R.id.loginFragment,true,false)
+                val context = getContext()
+                val packageManager = context?.packageManager
+                val intent = packageManager?.getLaunchIntentForPackage(context.packageName)
+                val componentName = intent!!.component
+                val mainIntent = Intent.makeRestartActivityTask(componentName)
+                context.startActivity(mainIntent)
+                Runtime.getRuntime().exit(0)
             }
         }
         return true
