@@ -162,7 +162,8 @@ class Essay_viewer : Fragment(), NavigationView.OnNavigationItemSelectedListener
                         CommentModel(
                             nickname,
                             editText_essay_viewer_write_comment.text.toString(),
-                            "0"
+                            "0",
+                            FBAuth.getUid()
                         )
                     )
                 editText_essay_viewer_write_comment.setText("")
@@ -185,7 +186,7 @@ class Essay_viewer : Fragment(), NavigationView.OnNavigationItemSelectedListener
                 comment_items.clear()
                 for(dataModel in dataSnapshot.children){
                     val item = dataModel.getValue(CommentModel::class.java)
-                    comment_items.add(Data_Essay_viewer_comment(item!!.commentNick,item!!.commentBody,item!!.commentThumb,dataModel.key!!, FBAuth.getUid()))
+                    comment_items.add(Data_Essay_viewer_comment(item!!.commentNick,item!!.commentBody,item!!.commentThumb,dataModel.key!!, item!!.uid))
                 }
 
                 val cc = v.findViewById<TextView>(R.id.textView_essay_viewer_comment_count)
