@@ -1,7 +1,6 @@
 package com.example.swengineering
 
 import android.app.AlertDialog
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -14,7 +13,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -33,7 +31,6 @@ import kotlinx.android.synthetic.main.fragment_my_essay_page.*
 import kotlinx.android.synthetic.main.fragment_my_essay_page.button_welcome_drawmenu
 import kotlinx.android.synthetic.main.fragment_my_essay_page.layout_drawer_welcome
 import kotlinx.android.synthetic.main.fragment_my_essay_page.naviview_Welcome
-import kotlinx.android.synthetic.main.fragment_welcome.*
 
 
 class MyEssayPage : Fragment(), NavigationView.OnNavigationItemSelectedListener {
@@ -122,7 +119,7 @@ class MyEssayPage : Fragment(), NavigationView.OnNavigationItemSelectedListener 
                 sub_button.setText("구독 중")
             }
         }
-        unregister.setOnClickListener {
+        button_unregister.setOnClickListener {
             val inflater :LayoutInflater = LayoutInflater.from(it.context)
             val view = inflater.inflate(R.layout.unreg_warning,null)
 
@@ -138,7 +135,13 @@ class MyEssayPage : Fragment(), NavigationView.OnNavigationItemSelectedListener 
                         .addOnCompleteListener { task ->
                             if (task.isSuccessful) {
                                 Toast.makeText(it.context, "정상적으로 탈퇴되었습니다", Toast.LENGTH_SHORT).show()
-                                navController.popBackStack(R.id.loginFragment,true,false)
+                                val context = getContext()
+                                val packageManager = context?.packageManager
+                                val intent = packageManager?.getLaunchIntentForPackage(context.packageName)
+                                val componentName = intent!!.component
+                                val mainIntent = Intent.makeRestartActivityTask(componentName)
+                                context.startActivity(mainIntent)
+                                Runtime.getRuntime().exit(0)
                             }
                         }
                 } else
@@ -168,8 +171,6 @@ class MyEssayPage : Fragment(), NavigationView.OnNavigationItemSelectedListener 
                         else
                             sub_button.setText("구독")
                     }
-
-
                     override fun onCancelled(error: DatabaseError) {
                         // Failed to read value
                         Log.w("WelcomeFragment", "Failed to read value.", error.toException())
