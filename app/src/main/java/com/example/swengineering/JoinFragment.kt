@@ -75,7 +75,7 @@ class JoinFragment : Fragment() {
                             Toast.makeText(it.context,"회원가입 성공", Toast.LENGTH_SHORT).show()
 
                         } else {
-                            Toast.makeText(it.context,"회원가입 실패",Toast.LENGTH_SHORT).show()
+                            Toast.makeText(it.context,"아이디가 잘못된 형식이거나 중복입니다",Toast.LENGTH_SHORT).show()
                         }
                     }
             }
