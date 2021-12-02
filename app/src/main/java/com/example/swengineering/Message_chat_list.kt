@@ -131,7 +131,7 @@ class Message_chat_list : Fragment(), NavigationView.OnNavigationItemSelectedLis
                     if(dataModel.key == key){
                         for (dataModel2 in dataModel.children) {
                             val content = dataModel2.value
-                            items.add(Data_Message_chat_list(content.toString()))
+                            items.add(0,Data_Message_chat_list(content.toString()))
                         }
                     }
                 }
