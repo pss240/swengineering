@@ -85,20 +85,22 @@ class MyEssayPage : Fragment(), NavigationView.OnNavigationItemSelectedListener 
 
         button_mypage_editName.setOnClickListener {
 
-
-            if (Uid == FBAuth.getUid()) {
-                FBRef.UsersRef.child(Uid).setValue(
-                    UserModel(
-                        textView_mypage_user_id.text.toString(),
-                        textView_mypage_user_name.text.toString(),
-                        Uid
+            if(textView_mypage_user_name.text.toString() == "")
+                Toast.makeText(it.context, "공백없이 입력해 주세요", Toast.LENGTH_SHORT).show()
+            else{
+                if (Uid == FBAuth.getUid()) {
+                    FBRef.UsersRef.child(Uid).setValue(
+                        UserModel(
+                            textView_mypage_user_id.text.toString(),
+                            textView_mypage_user_name.text.toString(),
+                            Uid
+                        )
                     )
-                )
-                Toast.makeText(it.context, "정상적으로 변경되었습니다", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(it.context, "정상적으로 변경되었습니다", Toast.LENGTH_SHORT).show()
 
-            } else
-                Toast.makeText(it.context, "권한이 없습니다", Toast.LENGTH_SHORT).show()
-
+                } else
+                    Toast.makeText(it.context, "권한이 없습니다", Toast.LENGTH_SHORT).show()
+            }
 
         }
 
