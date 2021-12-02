@@ -171,6 +171,8 @@ class Essay_viewer : Fragment(), NavigationView.OnNavigationItemSelectedListener
                 Toast.makeText(it.context,"댓글이 등록되었습니다",Toast.LENGTH_SHORT).show()
 
             }
+            else
+                Toast.makeText(it.context,"댓글을 입력해주세요",Toast.LENGTH_SHORT).show()
         }
 
         comment_getdata(view)

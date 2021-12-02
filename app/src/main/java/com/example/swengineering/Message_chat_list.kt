@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -94,8 +95,12 @@ class Message_chat_list : Fragment(), NavigationView.OnNavigationItemSelectedLis
 
         button_send.setOnClickListener {
 
-            FBRef.msgRef.child(logKey).push().setValue(nickname+": "+editText_msg.text)
-            editText_msg.setText("")
+            if(editText_msg.text.toString() != "") {
+                FBRef.msgRef.child(logKey).push().setValue(nickname + ": " + editText_msg.text)
+                editText_msg.setText("")
+            }
+            else
+                Toast.makeText(it.context,"메시지을 입력해주세요", Toast.LENGTH_SHORT).show()
 
         }
 
